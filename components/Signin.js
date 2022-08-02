@@ -1,6 +1,6 @@
 import React from 'react';
-// import { Button } from 'react-bootstrap';
-// import { signIn } from '../utils/auth';
+// import { Button } from 'bootstrap';
+import { signIn } from '../utils/auth';
 
 function Signin() {
   return (
@@ -15,9 +15,9 @@ function Signin() {
     >
       <h1>Hi there!</h1>
       <p>Click the button below to login!</p>
-      {/* <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
+      <button type="button" size="lg" className="btn btn-outline-primary" onClick={signIn}>
         Sign In
-      </Button> */}
+      </button>
     </div>
   );
 }
