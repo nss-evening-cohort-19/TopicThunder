@@ -6,21 +6,23 @@ function Home() {
   const { user } = useAuth();
 
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <button type="button" size="lg" className="btn-primary" onClick={signOut}>
-        Sign Out
-      </button>
-    </div>
+    <>
+      <div
+        className="text-center d-flex flex-column justify-content-center align-content-center"
+        style={{
+          height: '90vh',
+          padding: '30px',
+          maxWidth: '400px',
+          margin: '0 auto',
+        }}
+      >
+        <h1>Hello {user.displayName}! </h1>
+        <p>The below is a test button I`&#39`ve been using to test data manipulations</p>
+        <button variant="danger" type="button" size="lg" className="btn-primary" onClick={signOut}>
+          Sign Out
+        </button>
+      </div>
+    </>
   );
 }
 
