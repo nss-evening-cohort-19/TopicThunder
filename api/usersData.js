@@ -29,6 +29,15 @@ const updateUser = (userFirebaseKey, userObj) => new Promise((resolve, reject) =
     .then((response) => resolve(response)).catch(reject);
 });
 
+/*
+Example userObj:
+{
+  "displayName": "George Harrison",
+  "uid": "user.uid",
+  "image": "https://faroutmagazine.co.uk/static/uploads/2022/07/How-to-play-drums-like-Ringo-Starr.jpg"
+}
+*/
+
 const addFollowRelation = (followerFirebaseKey, followeeFirebaseKey) => {
   let followerIsCurrentlyFollowing = [];
   let followeeIsCurrentlyBeingFollowedBy = [];
@@ -75,15 +84,6 @@ const removeFollowRelation = (followerFirebaseKey, followeeFirebaseKey) => {
         .then().catch();
     }).catch();
 };
-
-/*
-Example userObj:
-{
-  "displayName": "George Harrison",
-  "uid": "user.uid",
-  "image": "https://faroutmagazine.co.uk/static/uploads/2022/07/How-to-play-drums-like-Ringo-Starr.jpg"
-}
-*/
 
 export {
   getUserByUid,
