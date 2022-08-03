@@ -1,7 +1,6 @@
 // import { Button } from 'react-bootstrap';
 // import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import { addFollowRelation } from '../api/usersData';
 
 function Home() {
   const { user } = useAuth();
@@ -17,10 +16,10 @@ function Home() {
       }}
     >
       <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => addFollowRelation('-N8V1NJy9iNJDisnYJno', '-N8V12atHLWuVd9WQu1K')}>
+      {/* <p>The below is a test button I've been using to test data manipulations</p>
+      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => addFollowRelation('-N8V0GzBy7sydEXIYRlL', '-N8V12atHLWuVd9WQu1K')}>
         Add relationship
-      </button>
+      </button> */}
     </div>
   );
 }

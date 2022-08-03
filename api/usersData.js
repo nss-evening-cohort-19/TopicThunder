@@ -5,13 +5,13 @@ const dbUrl = clientCredentials.databaseURL;
 
 const getUserByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users.json?orderBy="uid"&"equalTo"="${uid}"`)
-    .then((response) => resolve(response))
+    .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 
 const getUserByFirebaseKey = (userFirebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users/${userFirebaseKey}.json`)
-    .then((response) => resolve(response))
+    .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });
 
@@ -36,6 +36,7 @@ const addFollowRelation = (followerFirebaseKey, followeeFirebaseKey) => {
   const followeesNewFollowedByArray = [followerFirebaseKey];
   Promise.all([getUserByFirebaseKey(followerFirebaseKey), getUserByFirebaseKey(followeeFirebaseKey)])
     .then(([followerObj, followeeObj]) => {
+      console.warn(followerObj);
       if (followerObj.usersFollowed) {
         followerIsCurrentlyFollowing = followerObj.usersFollowed;
         followersNewFollowingArray.unshift(...followerIsCurrentlyFollowing);
