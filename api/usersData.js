@@ -38,7 +38,7 @@ Example userObj:
 }
 */
 
-const addFollowRelation = (followerFirebaseKey, followeeFirebaseKey) => {
+const addFollowRelationship = (followerFirebaseKey, followeeFirebaseKey) => {
   let followerIsCurrentlyFollowing = [];
   let followeeIsCurrentlyBeingFollowedBy = [];
   const followersNewFollowingArray = [followeeFirebaseKey];
@@ -61,7 +61,7 @@ const addFollowRelation = (followerFirebaseKey, followeeFirebaseKey) => {
     }).catch();
 };
 
-const removeFollowRelation = (followerFirebaseKey, followeeFirebaseKey) => {
+const removeFollowRelationship = (followerFirebaseKey, followeeFirebaseKey) => {
   let followerIsCurrentlyFollowing = [];
   let followeeIsCurrentlyBeingFollowedBy = [];
   let followersNewFollowingArray = [];
@@ -89,6 +89,6 @@ export {
   getUserByUid,
   getUserByFirebaseKey,
   createUser,
-  addFollowRelation,
-  removeFollowRelation,
+  addFollowRelationship,
+  removeFollowRelationship,
 };
