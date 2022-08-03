@@ -16,10 +16,10 @@ function Home() {
       }}
     >
       <h1>Hello {user.displayName}! </h1>
-      <p>Click the button below to logout!</p>
-      {/* <Button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Sign Out
-      </Button> */}
+      {/* <p>The below is a test button I've been using to test data manipulations</p>
+      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => addFollowRelation('-N8V0GzBy7sydEXIYRlL', '-N8V12atHLWuVd9WQu1K')}>
+        Add relationship
+      </button> */}
     </div>
   );
 }
