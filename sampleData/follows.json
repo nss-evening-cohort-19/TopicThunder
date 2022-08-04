@@ -1,0 +1,10 @@
+{
+    "georgeUid_johnUid": "johnUid",
+    "georgeUid_paulUid": "paulUid",
+    "georgeUid_ringoUid": "ringoUid",
+    "johnUid_georgeUid": "georgeUid",
+    "johnUid_paulUid": "paulUid",
+    "johnUid_ringoUid": "ringoUid",
+    "paulUid_johnUid": "johnUid",
+    "paulUid_ringoUid": "ringoUid"
+  }

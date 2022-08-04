@@ -5,13 +5,13 @@
         "body": "Why are you two so weird",
         "firebaseKey": "-N8V4Tm46KXniYN96m9O",
         "time": 1234362789,
-        "user": "-N8V0GzBy7sydEXIYRlL"
+        "user": "paulUid"
       },
       "-N8V4trWmyKhibfwztmq": {
         "body": "John I think it's beautiful",
         "firebaseKey": "-N8V4Tm46KXniYN96m9O",
         "time": 22234362789,
-        "user": "-N8V12atHLWuVd9WQu1K"
+        "user": "georgeUid"
       }
     },
     "containedByBoards": [
@@ -23,7 +23,7 @@
     "link": "https://psychonautwiki.org/wiki/Echinopsis_peruviana",
     "name": "Peruvian Torch Cactus",
     "time": 12362781,
-    "user": "-N8V0jCkVa_eDrvoThdN"
+    "user": "johnUid"
   },
   "-N8V5pPp6XP1l-blMM_R": {
     "containedByBoards": [
@@ -39,17 +39,17 @@
         "firebaseKey": "-N8V6KgWYwZBfSf2xBtn",
         "positive": true,
         "type": "heart",
-        "user": "-N8V1NJy9iNJDisnYJno"
+        "user": "ringoUid"
       },
       "-N8V7lhkTAFuCaCl_qeb": {
         "firebaseKey": "-N8V7lhkTAFuCaCl_qeb",
         "positive": true,
         "type": "laugh",
-        "user": "-N8V12atHLWuVd9WQu1K"
+        "user": "georgeUid"
       }
     },
     "time": 122362781,
-    "user": "-N8V0jCkVa_eDrvoThdN"
+    "user": "johnUid"
   },
   "-N8V8k1eh2Ox25ZPSsxN": {
     "containedByBoards": [
@@ -65,11 +65,11 @@
         "firebaseKey": "-N8V90YQHweNRhRbe9bF",
         "positive": true,
         "type": "heart",
-        "user": "-N8V0GzBy7sydEXIYRlL"
+        "user": "paulUid"
       }
     },
     "time": 222362782,
-    "user": "-N8V0GzBy7sydEXIYRlL"
+    "user": "paulUid"
   },
   "-N8V9cihirsHg--gjYbl": {
     "containedByBoards": [
@@ -81,7 +81,7 @@
     "link": "https://en.wikipedia.org/wiki/Yesterday_(Beatles_song)",
     "name": "Yesterday",
     "time": 222362782,
-    "user": "-N8V0GzBy7sydEXIYRlL"
+    "user": "paulUid"
   },
   "-N8VAPGdW16HueQfpdnS": {
     "containedByBoards": [
@@ -93,6 +93,6 @@
     "link": "https://en.wikipedia.org/wiki/Hey_Jude",
     "name": "Hey Jude",
     "time": 222362783,
-    "user": "-N8V0GzBy7sydEXIYRlL"
+    "user": "paulUid"
   }
 }
