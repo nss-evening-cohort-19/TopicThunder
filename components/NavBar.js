@@ -1,61 +1,53 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import Link from 'next/link';
 import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
     <>
-      {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Container>
-          <Link passHref href="/">
-            <Navbar.Brand>CHANGE ME</Navbar.Brand>
-          </Link>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Link passHref href="/">
-                <Nav.Link>Home</Nav.Link>
-              </Link>
-              <Button variant="danger" onClick={signOut}>Sign Out</Button>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar> */}
-
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">Navbar</a>
+          <a className="navbar-brand" href="#">Topic Thunder</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon" />
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <Link passHref href="/">
+                  <button type="button" className="btn btn-dark">Home</button>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Link</a>
+                <Link passHref href="/today">
+                  <a className="nav-link" href="#">Today</a>
+                </Link>
               </li>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
+              <li className="nav-item">
+                <Link passHref href="/create">
+                  <a className="nav-link" href="#">Create</a>
+                </Link>
+              </li>
+              {/* <li className="nav-item dropdown">
+                <Link passHref href="/create">
+                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Create
+                  </a>
+                </Link>
                 <ul className="dropdown-menu">
                   <li><a className="dropdown-item" href="#">Action</a></li>
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><hr className="dropdown-divider" /></li>
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                 </ul>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled">Disabled</a>
-              </li>
+              </li> */}
             </ul>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-success" type="submit">Search</button>
             </form>
-            <button type="button" className="btn btn-outline-danger" onClick={signOut}>Sign Out</button>
+            <button type="button" className="btn btn-outline-danger" onClick={signOut}>Log Out</button>
           </div>
         </div>
       </nav>
