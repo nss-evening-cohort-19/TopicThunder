@@ -1,26 +1,30 @@
 {
-  "paulUid": {
+  "cartyp": {
     "displayName": "Paul McCartney",
     "firebaseKey": "paulUid",
     "image": "https://s.yimg.com/ny/api/res/1.2/TKcCfYY1abua5Vj6Q1xVvw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQ4MA--/https://s.yimg.com/uu/api/res/1.2/aUBIhmB.aboNwthBs_VkVg--~B/aD05MDA7dz0xMjAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/the_independent_577/a8b29da8b79c6dbc4a2ce7122fb3604b",
-    "uid": "paulUid"
+    "uid": "paulUid",
+    "handle": "cartyp"
   },
-  "johnUid": {
+  "jleno": {
     "displayName": "John Lennon",
     "firebaseKey": "johnUid",
     "image": "https://dailygazette.com/wp-content/uploads/fly-images/183812/web_john_lennon-940x940.jpg",
-    "uid": "johnUid"
+    "uid": "johnUid",
+    "handle": "jleno"
   },
-  "georgeUid": {
+  "georgey": {
     "displayName": "George Harrison",
     "firebaseKey": "georgeUid",
     "image": "https://faroutmagazine.co.uk/static/uploads/2020/10/This-was-why-George-Harrison-didnt-like-being-a-member-of-The-Beatles.jpg",
-    "uid": "georgeUid"
+    "uid": "georgeUid",
+    "handle": "georgey"
   },
-  "ringoUid": {
+  "starpower": {
     "displayName": "Ringo Starr",
     "image": "https://faroutmagazine.co.uk/static/uploads/2022/07/How-to-play-drums-like-Ringo-Starr.jpg",
     "firebaseKey": "ringoUid",
-    "uid": "ringoUid"
+    "uid": "ringoUid",
+    "handle": "starpower"
   }
 }
