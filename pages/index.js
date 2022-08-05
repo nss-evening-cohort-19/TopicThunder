@@ -1,7 +1,6 @@
 // import { Button } from 'react-bootstrap';
 // import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
-import { getAllPins } from '../api/pinsData';
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossOrigin="anonymous" />;
 
@@ -20,9 +19,9 @@ function Home() {
     >
       <h1>Hello {user.displayName}! </h1>
       <p>The below is a test button I have been using to test data manipulations</p>
-      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => getAllPins().then(console.warn)}>
-        Console log all the pins
-      </button>
+      {/* <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => getUserByHandle('NachoLibre').then(console.warn)}>
+        Get user by handle
+      </button> */}
     </div>
   );
 }
