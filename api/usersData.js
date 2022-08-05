@@ -39,57 +39,8 @@ const updateUser = (handle, userObj) => new Promise((resolve, reject) => {
     .then((response) => resolve(response)).catch(reject);
 });
 
-const addFollowRelationship = (followerFirebaseKey, followeeFirebaseKey) => {
-  let followerIsCurrentlyFollowing = [];
-  let followeeIsCurrentlyBeingFollowedBy = [];
-  const followersNewFollowingArray = [followeeFirebaseKey];
-  const followeesNewFollowedByArray = [followerFirebaseKey];
-  Promise.all([getUserByFirebaseKey(followerFirebaseKey), getUserByFirebaseKey(followeeFirebaseKey)])
-    .then(([followerObj, followeeObj]) => {
-      console.warn(followerObj);
-      if (followerObj.usersFollowed) {
-        followerIsCurrentlyFollowing = followerObj.usersFollowed;
-        followersNewFollowingArray.unshift(...followerIsCurrentlyFollowing);
-      }
-      if (followeeObj.usersFollowed) {
-        followeeIsCurrentlyBeingFollowedBy = followeeObj.usersFollowed;
-        followeesNewFollowedByArray.unshift(...followeeIsCurrentlyBeingFollowedBy);
-      }
-      const newFollowerObj = { usersFollowed: followersNewFollowingArray };
-      const newFolloweeObj = { followedBy: followeesNewFollowedByArray };
-      Promise.all([updateUser(followerFirebaseKey, newFollowerObj), updateUser(followeeFirebaseKey, newFolloweeObj)])
-        .then().catch();
-    }).catch();
-};
-
-const removeFollowRelationship = (followerFirebaseKey, followeeFirebaseKey) => {
-  let followerIsCurrentlyFollowing = [];
-  let followeeIsCurrentlyBeingFollowedBy = [];
-  let followersNewFollowingArray = [];
-  let followeesNewFollowedByArray = [];
-  Promise.all([getUserByFirebaseKey(followerFirebaseKey), getUserByFirebaseKey(followeeFirebaseKey)])
-    .then(([followerObj, followeeObj]) => {
-      if (followerObj.usersFollowed) {
-        followerIsCurrentlyFollowing = followerObj.usersFollowed;
-        followersNewFollowingArray = followerIsCurrentlyFollowing;
-      }
-      if (followeeObj.usersFollowed) {
-        followeeIsCurrentlyBeingFollowedBy = followeeObj.usersFollowed;
-        followeesNewFollowedByArray = followeeIsCurrentlyBeingFollowedBy;
-      }
-      followersNewFollowingArray = followersNewFollowingArray.filter((user) => user !== followeeFirebaseKey);
-      followeesNewFollowedByArray = followeesNewFollowedByArray.filter((user) => user !== followerFirebaseKey);
-      const newFollowerObj = { usersFollowed: followersNewFollowingArray };
-      const newFolloweeObj = { followedBy: followeesNewFollowedByArray };
-      Promise.all([updateUser(followerFirebaseKey, newFollowerObj), updateUser(followeeFirebaseKey, newFolloweeObj)])
-        .then().catch();
-    }).catch();
-};
-
 export {
   getUserByUid,
   getUserByHandle,
   createUser,
-  addFollowRelationship,
-  removeFollowRelationship,
 };
