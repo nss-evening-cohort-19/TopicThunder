@@ -4,15 +4,29 @@ import PinCard from '../components/PinCard';
 // import PropTypes from 'prop-types';
 
 function Today() {
-  const [pin, setPin] = useState([]);
+  const [mappedPins, setMappedPins] = useState([]);
+  // const [pin, setPin] = useState([]);
+
+  const getTodaysPins = () => {
+    getPinByFirebaseKey().then((pinsArray) => {
+      console.warn(pinsArray);
+      // setPin(pinsArray);
+      setMappedPins(pinsArray);
+    });
+  };
 
   useEffect(() => {
-    getPinByFirebaseKey('-N8V45RB3KJpf4kMqBnw').then(setPin);
+    getTodaysPins();
   }, []);
+
   return (
     <>
       <div>Today</div>
-      <PinCard pinObj={pin} />
+      <div className="pins-map">
+        {mappedPins.map((pins) => (
+          <PinCard key={pins.firebaseKey} pinObj={pins} onUpdate={getTodaysPins} />
+        ))}
+      </div>
     </>
   );
 }
