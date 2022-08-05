@@ -29,6 +29,11 @@ export default function NavBar() {
                   <a className="nav-link" href="#">Create</a>
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link passHref href="/home">
+                  <a className="nav-link" href="#">Home2.0</a>
+                </Link>
+              </li>
               {/* <li className="nav-item dropdown">
                 <Link passHref href="/create">
                   <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
