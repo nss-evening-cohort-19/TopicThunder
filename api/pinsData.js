@@ -3,6 +3,12 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
+const getAllPins = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
+
 const getPinByFirebaseKey = (pinFirebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/pins/${pinFirebaseKey}.json`)
     .then((response) => resolve(response.data))
@@ -25,6 +31,7 @@ const getPinsByBoard = (boardFirebaseKey) => new Promise((resolve, reject) => {
 });
 
 export {
+  getAllPins,
   getPinByFirebaseKey,
   getPinsByUser,
   getPinsByBoard,
