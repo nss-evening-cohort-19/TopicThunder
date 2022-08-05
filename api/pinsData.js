@@ -5,7 +5,7 @@ const dbUrl = clientCredentials.databaseURL;
 
 const getAllPins = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/pins.json`)
-    .then((response) => resolve(response.data))
+    .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
 

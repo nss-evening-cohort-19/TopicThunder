@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getPinByFirebaseKey } from '../api/pinsData';
+import { getAllPins } from '../api/pinsData';
 import PinCard from '../components/PinCard';
 // import PropTypes from 'prop-types';
 
@@ -8,7 +8,7 @@ function Today() {
   // const [pin, setPin] = useState([]);
 
   const getTodaysPins = () => {
-    getPinByFirebaseKey().then((pinsArray) => {
+    getAllPins().then((pinsArray) => {
       console.warn(pinsArray);
       // setPin(pinsArray);
       setMappedPins(pinsArray);
@@ -23,8 +23,8 @@ function Today() {
     <>
       <div>Today</div>
       <div className="pins-map">
-        {mappedPins.map((pins) => (
-          <PinCard key={pins.firebaseKey} pinObj={pins} onUpdate={getTodaysPins} />
+        {mappedPins.map((pin) => (
+          <PinCard key={pin.firebaseKey} pinObj={pin} onUpdate={getTodaysPins} />
         ))}
       </div>
     </>
