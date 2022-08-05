@@ -1,56 +1,30 @@
 {
-  "-N8V0GzBy7sydEXIYRlL": {
+  "cartyp": {
     "displayName": "Paul McCartney",
-    "firebaseKey": "-N8V0GzBy7sydEXIYRlL",
-    "followedBy": [
-      "-N8V0jCkVa_eDrvoThdN",
-      "-N8V12atHLWuVd9WQu1K"
-    ],
+    "firebaseKey": "paulUid",
     "image": "https://s.yimg.com/ny/api/res/1.2/TKcCfYY1abua5Vj6Q1xVvw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQ4MA--/https://s.yimg.com/uu/api/res/1.2/aUBIhmB.aboNwthBs_VkVg--~B/aD05MDA7dz0xMjAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/the_independent_577/a8b29da8b79c6dbc4a2ce7122fb3604b",
     "uid": "paulUid",
-    "usersFollowed": [
-      "-N8V0jCkVa_eDrvoThdN",
-      "-N8V1NJy9iNJDisnYJno"
-    ]
+    "handle": "cartyp"
   },
-  "-N8V0jCkVa_eDrvoThdN": {
+  "jleno": {
     "displayName": "John Lennon",
-    "firebaseKey": "-N8V0jCkVa_eDrvoThdN",
-    "followedBy": [
-      "-N8V0GzBy7sydEXIYRlL",
-      "-N8V12atHLWuVd9WQu1K"
-    ],
+    "firebaseKey": "johnUid",
     "image": "https://dailygazette.com/wp-content/uploads/fly-images/183812/web_john_lennon-940x940.jpg",
     "uid": "johnUid",
-    "usersFollowed": [
-      "-N8V0GzBy7sydEXIYRlL",
-      "-N8V12atHLWuVd9WQu1K",
-      "-N8V1NJy9iNJDisnYJno"
-    ]
+    "handle": "jleno"
   },
-  "-N8V12atHLWuVd9WQu1K": {
+  "georgey": {
     "displayName": "George Harrison",
-    "firebaseKey": "-N8V12atHLWuVd9WQu1K",
-    "followedBy": [
-      "-N8V0jCkVa_eDrvoThdN"
-    ],
+    "firebaseKey": "georgeUid",
     "image": "https://faroutmagazine.co.uk/static/uploads/2020/10/This-was-why-George-Harrison-didnt-like-being-a-member-of-The-Beatles.jpg",
     "uid": "georgeUid",
-    "usersFollowed": [
-      "-N8V0GzBy7sydEXIYRlL",
-      "-N8V0jCkVa_eDrvoThdN",
-      "-N8V1NJy9iNJDisnYJno"
-    ]
+    "handle": "georgey"
   },
-  "-N8V1NJy9iNJDisnYJno": {
+  "starpower": {
     "displayName": "Ringo Starr",
-    "followedBy": [
-      "-N8V0jCkVa_eDrvoThdN",
-      "-N8V0GzBy7sydEXIYRlL",
-      "-N8V12atHLWuVd9WQu1K"
-    ],
     "image": "https://faroutmagazine.co.uk/static/uploads/2022/07/How-to-play-drums-like-Ringo-Starr.jpg",
-    "name": "-N8V1NJy9iNJDisnYJno",
-    "uid": "ringoUid"
+    "firebaseKey": "ringoUid",
+    "uid": "ringoUid",
+    "handle": "starpower"
   }
 }
