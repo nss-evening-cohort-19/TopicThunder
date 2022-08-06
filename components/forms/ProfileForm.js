@@ -30,7 +30,7 @@ function ProfileForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.firebaseKey) {
+    if (obj.handle) {
       updateUser(formInput)
         .then(() => router.push(`/profile/${obj.handle}`));
     } else {
@@ -41,7 +41,7 @@ function ProfileForm({ obj }) {
     }
   };
   return (
-    <div className="card text-center text-dark bg-light mb-3">
+    <div className="card cardForm text-center text-dark bg-light mb-3">
       <div className="card-header">
         Create Profile
       </div>
@@ -49,7 +49,7 @@ function ProfileForm({ obj }) {
         <form onSubmit={handleSubmit}>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Profile Image
-              <input type="url" id="image" className="form-control" placeholder="url" aria-label="image" aria-describedby="basic-addon1" value={formInput.image} onChange={handleChange} required />
+              <input type="url" id="image" className="form-control" placeholder="url" aria-label="image" aria-describedby="basic-addon1" value={formInput.image || ''} onChange={handleChange} required />
             </label>
           </div>
           <div className="input-group mb-3">

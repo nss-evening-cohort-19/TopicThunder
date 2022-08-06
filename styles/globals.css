@@ -18,13 +18,23 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: rgb(250, 248, 248);
 }
-.card {
+.navLogo {
+  height: 2.5rem;
+  margin-left: 1rem;
+}
+.cardForm {
   margin: 2rem;
-  box-shadow: .5rem .5rem .5rem darkcyan;
+  box-shadow: .5rem .5rem .5rem darkgray;
 }
 .input-group {
   display: flex;
   justify-content: center;
+}
+.icons {
+  border-radius: 50%;
+}
+.search-me {
+  width: 100%;
 }
