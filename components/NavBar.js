@@ -16,7 +16,7 @@ export default function NavBar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link passHref href="/">
-                  <button type="button" className="btn btn-dark">Home</button>
+                  <a className="nav-link active" aria-current="page" href="#">Home</a>
                 </Link>
               </li>
               <li className="nav-item">
@@ -47,6 +47,7 @@ export default function NavBar() {
                   <li><a className="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li> */}
+
             </ul>
             <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
