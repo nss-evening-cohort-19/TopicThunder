@@ -17,7 +17,23 @@ const getWhoFollowsUser = (handle) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const addFollow = (followerHandle, followedHandle) => new Promise((resolve, reject) => {
+  const followKeyValue = `{"${followerHandle}==${followedHandle}" : "${followedHandle}"}`;
+  axios.patch(`${dbUrl}/follows.json`, followKeyValue)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
+const removeFollow = (followerHandle, followedHandle) => new Promise((resolve, reject) => {
+  const followKey = `${followerHandle}==${followedHandle}`;
+  axios.delete(`${dbUrl}/follows/${followKey}.json`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
 export {
   getWhoUserFollows,
   getWhoFollowsUser,
+  addFollow,
+  removeFollow,
 };

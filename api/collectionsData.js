@@ -17,7 +17,23 @@ const getBoardsThatContainGivenPin = (pinFirebaseKey) => new Promise((resolve, r
     .catch((error) => reject(error));
 });
 
+const addPinToBoard = (pinFirebaseKey, boardFirebaseKey) => new Promise((resolve, reject) => {
+  const collectionKeyValue = `{"${boardFirebaseKey}==${pinFirebaseKey}" : "${pinFirebaseKey}"}`;
+  axios.patch(`${dbUrl}/collections.json`, collectionKeyValue)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
+const removePinFromBoard = (pinFirebaseKey, boardFirebaseKey) => new Promise((resolve, reject) => {
+  const collectionKey = `${boardFirebaseKey}==${pinFirebaseKey}`;
+  axios.delete(`${dbUrl}/collections/${collectionKey}.json`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
 export {
   getPinsContainedByGivenBoard,
   getBoardsThatContainGivenPin,
+  addPinToBoard,
+  removePinFromBoard,
 };
