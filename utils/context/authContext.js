@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 // Context API Docs: https://beta.reactjs.org/learn/passing-data-deeply-with-context
-
+// import { check } from 'prettier';
 import React, {
   createContext,
   useContext,
@@ -7,6 +8,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { getUserByUid } from '../../api/usersData';
 import { firebase } from '../client';
 
 const AuthContext = createContext();
@@ -21,10 +23,21 @@ const AuthProvider = (props) => {
   // false = user is not logged in, but the app has loaded
   // an object/value = user is logged in
 
+  const checkAndSetHandle = (userObj) => {
+    getUserByUid(userObj.uid).then((response) => {
+      if (response !== undefined) {
+        setUser((prevState) => ({
+          ...prevState, handle: response.handle,
+        }));
+      }
+    });
+  };
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((fbUser) => {
       if (fbUser) {
         setUser(fbUser);
+        checkAndSetHandle(fbUser);
       } else {
         setUser(false);
       }
@@ -35,6 +48,7 @@ const AuthProvider = (props) => {
     () => ({
       user,
       userLoading: user === null,
+      checkAndSetHandle,
       // as long as user === null, will be true
       // As soon as the user value !== null, value will be false
     }),
