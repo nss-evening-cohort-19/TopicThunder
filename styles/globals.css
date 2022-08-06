@@ -20,3 +20,11 @@ a {
 body {
   background-color: #88effd;
 }
+.card {
+  margin: 2rem;
+  box-shadow: .5rem .5rem .5rem darkcyan;
+}
+.input-group {
+  display: flex;
+  justify-content: center;
+}

@@ -43,4 +43,5 @@ export {
   getUserByUid,
   getUserByHandle,
   createUser,
+  updateUser,
 };
