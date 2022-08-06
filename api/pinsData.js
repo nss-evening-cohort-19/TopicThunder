@@ -21,7 +21,7 @@ const getPinsByUser = (userHandle) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deletePin = (pinFirebaseKey) => new Promise((resolve, reject) => {
+const deletePinShallow = (pinFirebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/pins/${pinFirebaseKey}.json`)
     .then((response) => resolve(response))
     .catch((error) => reject(error));
@@ -46,7 +46,7 @@ export {
   getAllPins,
   getPinByFirebaseKey,
   getPinsByUser,
-  deletePin,
+  deletePinShallow,
   createPin,
   updatePin,
 };

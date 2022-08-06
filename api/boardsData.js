@@ -21,12 +21,14 @@ const getBoardsByUser = (userHandle) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteBoard = (boardFirebaseKey) => new Promise((resolve, reject) => {
+const deleteBoardShallow = (boardFirebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/boards/${boardFirebaseKey}.json`)
+    .then(resolve).catch(reject);
 });
 
 export {
   getAllBoards,
   getBoardByFirebaseKey,
   getBoardsByUser,
+  deleteBoardShallow,
 };

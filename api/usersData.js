@@ -39,9 +39,16 @@ const updateUser = (handle, userObj) => new Promise((resolve, reject) => {
     .then((response) => resolve(response)).catch(reject);
 });
 
+const deleteUserShallow = (handle) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/users/${handle}.json`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
 export {
   getUserByUid,
   getUserByHandle,
   createUser,
   updateUser,
+  deleteUserShallow,
 };

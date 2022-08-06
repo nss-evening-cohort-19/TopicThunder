@@ -1,46 +1,47 @@
-import axios from 'axios';
-import { clientCredentials } from '../utils/client';
-import { getBoardsByUser } from './boardsData';
+import { deleteBoardShallow, getBoardsByUser } from './boardsData';
+import { getBoardsThatContainGivenPin, getPinsContainedByGivenBoard, removePinFromBoard } from './collectionsData';
 import { getWhoFollowsUser, getWhoUserFollows, removeFollow } from './followsData';
-import { deletePin, getPinsByUser } from './pinsData';
+import { deletePinShallow, getPinsByUser } from './pinsData';
+import { deleteUserShallow } from './usersData';
 
-const dbUrl = clientCredentials.databaseURL;
+const deletePin = (pinFirebaseKey) => new Promise((resolve, reject) => {
+  getBoardsThatContainGivenPin(pinFirebaseKey).then((response) => {
+    const removePinFromBoards = response.map((board) => removePinFromBoard(pinFirebaseKey, board.firebaseKey));
+    Promise.all(removePinFromBoards).then(resolve).catch(reject);
+  });
+  deletePinShallow(pinFirebaseKey);
+});
+
+const deleteBoard = (boardFirebaseKey) => new Promise((resolve, reject) => {
+  getPinsContainedByGivenBoard(boardFirebaseKey).then((response) => {
+    const removePinsFromBoard = response.map((pin) => removePinFromBoard(pin.firebaseKey, boardFirebaseKey));
+    Promise.all(removePinsFromBoard).then(resolve).catch(reject);
+  });
+  deleteBoardShallow(boardFirebaseKey);
+});
 
 const deleteUser = (userHandle) => new Promise((resolve, reject) => {
-  getWhoFollowsUser(userHandle).then((arrayOfHandles) => {
-    const deleteIncomingFollows = arrayOfHandles.map((incomingFollowHandle) => removeFollow(incomingFollowHandle, userHandle));
+  getWhoFollowsUser(userHandle).then((arrayOfUsers) => {
+    const deleteIncomingFollows = arrayOfUsers.map((incomingFollowUser) => removeFollow(incomingFollowUser.handle, userHandle));
     Promise.all(deleteIncomingFollows).then(resolve).catch(reject);
   });
-  getWhoUserFollows(userHandle).then((arrayOfHandles) => {
-    const deleteOutgoingFollows = arrayOfHandles.map((outgoingFollowHandle) => removeFollow(userHandle, outgoingFollowHandle));
+  getWhoUserFollows(userHandle).then((arrayOfUsers) => {
+    const deleteOutgoingFollows = arrayOfUsers.map((outgoingFollowUser) => removeFollow(userHandle, outgoingFollowUser.handle));
     Promise.all(deleteOutgoingFollows).then(resolve).catch(reject);
   });
   getPinsByUser(userHandle).then((arrayOfPinObjects) => {
-    const deleteUsersPins = arrayOfPinObjects.map((userPin) => deletePin(userPin.pinFirebaseKey));
+    const deleteUsersPins = arrayOfPinObjects.map((userPin) => deletePin(userPin.firebaseKey));
     Promise.all(deleteUsersPins).then(resolve).catch(reject);
   });
   getBoardsByUser(userHandle).then((arrayOfBaordObjects) => {
-    const deleteUsersBoards = arrayOfBaordObjects.map((userBoard) => )
+    const deleteUsersBoards = arrayOfBaordObjects.map((userBoard) => deleteBoard(userBoard.firebaseKey));
+    Promise.all(deleteUsersBoards).then(resolve).catch(reject);
   });
-});
-
-const removePin = (pinFirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/follows.json?orderBy="$value"&equalTo="${handle}"`)
-    .then((response) => {
-      resolve(Object.keys(response.data).map((string) => string.split('==')[0]));
-    })
-    .catch((error) => reject(error));
-});
-
-const removeBoard = (boardFirebaseKey) => new Promise((resolve, reject) => {
-  const followKeyValue = `{"${followerHandle}==${followedHandle}" : "${followedHandle}"}`;
-  axios.patch(`${dbUrl}/follows.json`, followKeyValue)
-    .then((response) => resolve(response))
-    .catch((error) => reject(error));
+  deleteUserShallow(userHandle);
 });
 
 export {
+  deletePin,
+  deleteBoard,
   deleteUser,
-  removePin,
-  removeBoard,
 };
