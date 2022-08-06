@@ -88,6 +88,7 @@ const removeFollowRelationship = (followerFirebaseKey, followeeFirebaseKey) => {
 export {
   getUserByUid,
   getUserByFirebaseKey,
+  updateUser,
   createUser,
   addFollowRelationship,
   removeFollowRelationship,

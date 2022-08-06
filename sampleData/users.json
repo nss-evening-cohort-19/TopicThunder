@@ -1,6 +1,7 @@
 {
   "-N8V0GzBy7sydEXIYRlL": {
     "displayName": "Paul McCartney",
+    "handle": "cartyp",
     "firebaseKey": "-N8V0GzBy7sydEXIYRlL",
     "followedBy": [
       "-N8V0jCkVa_eDrvoThdN",
@@ -15,6 +16,7 @@
   },
   "-N8V0jCkVa_eDrvoThdN": {
     "displayName": "John Lennon",
+    "handle": "jleno",
     "firebaseKey": "-N8V0jCkVa_eDrvoThdN",
     "followedBy": [
       "-N8V0GzBy7sydEXIYRlL",
@@ -30,6 +32,7 @@
   },
   "-N8V12atHLWuVd9WQu1K": {
     "displayName": "George Harrison",
+    "handle": "georgey",
     "firebaseKey": "-N8V12atHLWuVd9WQu1K",
     "followedBy": [
       "-N8V0jCkVa_eDrvoThdN"
@@ -44,6 +47,7 @@
   },
   "-N8V1NJy9iNJDisnYJno": {
     "displayName": "Ringo Starr",
+    "handle": "starpower",
     "followedBy": [
       "-N8V0jCkVa_eDrvoThdN",
       "-N8V0GzBy7sydEXIYRlL",
