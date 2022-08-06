@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAllPins } from '../api/pinsData';
+
 import PinCard from '../components/PinCard';
 // import PropTypes from 'prop-types';
 

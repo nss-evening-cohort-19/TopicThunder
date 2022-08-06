@@ -22,7 +22,7 @@ function PinForm({ obj }) {
       setHandle(response.handle);
     });
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj, user.uid]);
+  }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,9 +39,8 @@ function PinForm({ obj }) {
         .then(() => router.push(`/pins/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, user: handle };
-      console.warn('createPin');
       createPin(payload).then(() => {
-        router.push('/today');
+        router.push('/home');
       });
     }
   };
@@ -54,7 +53,7 @@ function PinForm({ obj }) {
         <form onSubmit={handleSubmit}>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Pin Title
-              <input type="text" id="title-name" className="form-control" placeholder="Title of Pin" name="name" value={formInput.name} onChange={handleChange} required />
+              <input type="text" id="pin-name" className="form-control" placeholder="Title of Pin" name="name" value={formInput.name} onChange={handleChange} required />
             </label>
           </div>
           <div className="input-group mb-3">
@@ -67,8 +66,13 @@ function PinForm({ obj }) {
               <input type="text" id="pin-desc" className="form-control" placeholder="Describe this pin" name="description" value={formInput.description} onChange={handleChange} required />
             </label>
           </div>
+          <div className="input-group mb-3">
+            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Destination link
+              <input type="url" id="dest-url" className="form-control" placeholder="Enter an destination url" name="link" value={formInput.link} onChange={handleChange} required />
+            </label>
+          </div>
           <div className="btn-group-vertical">
-            <button type="submit" className="btn btn-dark">{obj.firebaseKey ? 'Update Pin' : 'Create Pin'}</button>
+            <button type="submit" className="btn btn-dark">{obj.firebaseKey ? 'Update' : 'Create'} Pin</button>
           </div>
         </form>
       </div>
@@ -84,8 +88,8 @@ PinForm.propTypes = {
     name: PropTypes.string,
     description: PropTypes.string,
     image: PropTypes.string,
+    link: PropTypes.string,
     firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
   }),
 };
 

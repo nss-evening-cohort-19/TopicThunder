@@ -17,7 +17,9 @@ function PinCard({ pinObj, onUpdate }) {
         <img src={pinObj.image} className="card-img-top" alt={pinObj.link} />
         <div className="card-body">
           <h5 className="card-title">{pinObj.name}</h5>
-          <p className="card-text">{pinObj.boardName}</p>
+          <Link passHref href="/">
+            <p className="card-text">{pinObj.link}</p>
+          </Link>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">An item</li>
@@ -25,7 +27,7 @@ function PinCard({ pinObj, onUpdate }) {
           <li className="list-group-item">A third item</li>
         </ul>
         <div className="card-body">
-          <Link href={`/pins/edit/${pinObj.firebaseKey}`} passHref>
+          <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
             <button type="button" className="card-edit">Edit</button>
           </Link><br />
           <button type="button" className="card-delete" onClick={deleteThisPin}>Delete</button>
