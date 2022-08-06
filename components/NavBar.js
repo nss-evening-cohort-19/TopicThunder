@@ -20,7 +20,7 @@ export default function NavBar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link passHref href="/">
-                  <button type="button" className="btn btn-dark">Home</button>
+                  <a className="nav-link active" aria-current="page" href="#">Home</a>
                 </Link>
               </li>
               <li className="nav-item">
