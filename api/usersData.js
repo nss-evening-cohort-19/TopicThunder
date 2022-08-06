@@ -5,7 +5,7 @@ const dbUrl = clientCredentials.databaseURL;
 
 const getUserByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
-    .then((response) => resolve(response.data))
+    .then((response) => resolve(Object.values(response.data)[0]))
     .catch((error) => reject(error));
 });
 
