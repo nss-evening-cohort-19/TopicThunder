@@ -1,16 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
-// import { deletePin } from '../api/pinsData';
+import Link from 'next/link';
+import { deletePin } from '../api/pinsData';
 
-function PinCard({ pinObj }) {
-  // const deleteThisPin = () => {
-  //   if (window.confirm(`Delete ${pinObj.name}?`)) {
-  //     deletePin(pinObj.firebaseKey).then(() => onUpdate());
-  //   }
-  // };
+function PinCard({ pinObj, onUpdate }) {
+  const deleteThisPin = () => {
+    if (window.confirm(`Delete ${pinObj.name}?`)) {
+      deletePin(pinObj.firebaseKey).then(() => onUpdate());
+    }
+  };
 
   return (
     <>
@@ -26,8 +25,10 @@ function PinCard({ pinObj }) {
           <li className="list-group-item">A third item</li>
         </ul>
         <div className="card-body">
-          {/* <a href="#" className="card-edit">Edit</a>
-          <a href="#" className="card-delete">Delete</a> */}
+          <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
+            <button type="button" className="card-edit">Edit</button>
+          </Link><br />
+          <button type="button" className="card-delete" onClick={deleteThisPin}>Delete</button>
         </div>
       </div>
     </>
@@ -42,7 +43,7 @@ PinCard.propTypes = {
     boardName: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
-  // onUpdate: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 PinCard.defaultProps = {
