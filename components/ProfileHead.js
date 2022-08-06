@@ -1,29 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 import PropTypes from 'prop-types';
 // import { getUserByUid } from '../api/usersData';
 
-function ProfilePage({ userObj }) {
-  const [pageDetails, setPageDetails] = useState({});
-  const router = useRouter();
-  const { firebaseKey } = router.query;
-
-  useEffect(() => {
-    pageDetails(firebaseKey).then(setPageDetails);
-  }, [firebaseKey]);
-
+function ProfilePage({ image, displayName, handle }) {
   return (
     <>
       <div className="card profile-page-top">
-        <img src={userObj.image} alt="profile pic" className="profile-pic" />
-        <h5 className="card-title">{userObj.displayName}</h5>
-        <sub className="card-text">{userObj.handle}</sub>
+        <img src={image} alt="profile pic" className="profile-pic" />
+        <h5 className="card-title">{displayName}</h5>
+        <sub className="card-text">{handle}</sub>
         <div className="card-text follow-link">
-          <ul className="list-group list-group-horizontal">
-            <li className="list-group-item">Followers: {userObj.followedBy.length}</li>
-            <li className="list-group-item">Follows: {userObj.usersFollowed.length}</li>
-          </ul>
+          {/* <ul className="list-group list-group-horizontal">
+            <li className="list-group-item">Followers: {followedBy.length}</li>
+            <li className="list-group-item">Follows: {usersFollowed.length}</li>
+          </ul> */}
         </div>
         <div className="btnGroup">
           <button type="button" className="btn btn-outline-dark">Share</button>
@@ -35,14 +26,9 @@ function ProfilePage({ userObj }) {
 }
 
 ProfilePage.propTypes = {
-  userObj: PropTypes.shape({
-    displayName: PropTypes.string,
-    handle: PropTypes.string,
-    followedBy: PropTypes.number,
-    usersFollowed: PropTypes.number,
-    firebaseKey: PropTypes.string,
-    image: PropTypes.string,
-  }).isRequired,
-};
+  displayName: PropTypes.string,
+  handle: PropTypes.string,
+  image: PropTypes.string,
+}.isRequired;
 
 export default ProfilePage;
