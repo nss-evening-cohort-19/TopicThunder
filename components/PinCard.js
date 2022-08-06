@@ -25,7 +25,7 @@ function PinCard({ pinObj, onUpdate }) {
           <li className="list-group-item">A third item</li>
         </ul>
         <div className="card-body">
-          <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
+          <Link href={`/pins/edit/${pinObj.firebaseKey}`} passHref>
             <button type="button" className="card-edit">Edit</button>
           </Link><br />
           <button type="button" className="card-delete" onClick={deleteThisPin}>Delete</button>

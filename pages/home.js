@@ -14,7 +14,7 @@ export default function HomePage() {
 
   useEffect(() => {
     getAllThePins();
-  }, []);
+  });
 
   return (
     <div>
