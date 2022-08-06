@@ -2,7 +2,7 @@ import axios from 'axios';
 import { clientCredentials } from '../utils/client';
 import { getBoardsByUser } from './boardsData';
 import { getWhoFollowsUser, getWhoUserFollows, removeFollow } from './followsData';
-import { getPinsByUser } from './pinsData';
+import { deletePin, getPinsByUser } from './pinsData';
 
 const dbUrl = clientCredentials.databaseURL;
 
@@ -16,10 +16,11 @@ const deleteUser = (userHandle) => new Promise((resolve, reject) => {
     Promise.all(deleteOutgoingFollows).then(resolve).catch(reject);
   });
   getPinsByUser(userHandle).then((arrayOfPinObjects) => {
-    const deleteUsersPins = arrayOfPinObjects.map((userPin) => removePin(userPin.pinFirebaseKey));
+    const deleteUsersPins = arrayOfPinObjects.map((userPin) => deletePin(userPin.pinFirebaseKey));
+    Promise.all(deleteUsersPins).then(resolve).catch(reject);
   });
   getBoardsByUser(userHandle).then((arrayOfBaordObjects) => {
-    // then promise.all delete those boards
+    const deleteUsersBoards = arrayOfBaordObjects.map((userBoard) => )
   });
 });
 

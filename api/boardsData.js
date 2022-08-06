@@ -15,10 +15,14 @@ const getBoardByFirebaseKey = (boardFirebaseKey) => new Promise((resolve, reject
     .catch((error) => reject(error));
 });
 
-const getBoardsByUser = (userFirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/boards.json?orderBy="user"&equalTo="${userFirebaseKey}"`)
+const getBoardsByUser = (userHandle) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/boards.json?orderBy="user"&equalTo="${userHandle}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
+});
+
+const deleteBoard = (boardFirebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/boards/${boardFirebaseKey}.json`)
 });
 
 export {

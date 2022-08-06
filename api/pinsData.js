@@ -15,17 +15,15 @@ const getPinByFirebaseKey = (pinFirebaseKey) => new Promise((resolve, reject) =>
     .catch((error) => reject(error));
 });
 
-const getPinsByUser = (userFirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pins.json?orderBy="user"&equalTo="${userFirebaseKey}"`)
+const getPinsByUser = (userHandle) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy="user"&equalTo="${userHandle}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
 
-const deletePin = (firebaseKey, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/pins/${firebaseKey}.json`, uid)
-    .then(() => {
-      getAllPins(uid).then((pinsArray) => resolve(pinsArray));
-    })
+const deletePin = (pinFirebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/pins/${pinFirebaseKey}.json`)
+    .then((response) => resolve(response))
     .catch((error) => reject(error));
 });
 
