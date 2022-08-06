@@ -1,17 +1,19 @@
 // import { Button } from 'react-bootstrap';
-// import { signOut } from '../utils/auth';
+import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
+// import { getBoardsThatContainGivenPin } from '../api/collectionsData';
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossOrigin="anonymous" />;
 
 function Home() {
-  const { user, checkAndSetHandle } = useAuth();
+  const { user } = useAuth();
 
   return (
     <div
       className="text-center d-flex flex-column justify-content-center align-content-center"
       style={{
         height: '90vh',
+        width: '90vw',
         padding: '30px',
         maxWidth: '400px',
         margin: '0 auto',
@@ -19,11 +21,8 @@ function Home() {
     >
       <h1>Hello {user.displayName}! </h1>
       <p>The below is a test button I have been using to test data manipulations</p>
-      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => console.warn(user.handle)}>
-        Console warn user.handle
-      </button>
-      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => checkAndSetHandle(user)}>
-        Check and set handle
+      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
+        Get user by handle
       </button>
     </div>
   );
