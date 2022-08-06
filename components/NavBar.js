@@ -19,8 +19,13 @@ export default function NavBar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
+                <Link passHref href="/home">
+                  <a className="nav-link" href="#">Home2.0</a>
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link passHref href="/">
-                  <a className="nav-link active" aria-current="page" href="#">Home</a>
+                  <a className="nav-link active" aria-current="page" href="#">Welcome</a>
                 </Link>
               </li>
               <li className="nav-item">
@@ -29,28 +34,11 @@ export default function NavBar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link passHref href="/create">
+                <Link passHref href="/pin/new">
                   <a className="nav-link" href="#">Create</a>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link passHref href="/home">
-                  <a className="nav-link" href="#">Home2.0</a>
-                </Link>
-              </li>
-              <li className="nav-item dropdown">
-                <Link passHref href="/create">
-                  <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Create
-                  </a>
-                </Link>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="#">Action</a></li>
-                  <li><a className="dropdown-item" href="#">Another action</a></li>
-                  <li><hr className="dropdown-divider" /></li>
-                  <li><a className="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
+
             </ul>
             <form className="d-flex search-me" role="search">
               <input className="form-control me-2" type="search" placeholder="&#128269; Search" aria-label="Search" />

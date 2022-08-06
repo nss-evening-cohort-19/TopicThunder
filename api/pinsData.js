@@ -43,6 +43,11 @@ const updatePin = (pinObj) => new Promise((resolve, reject) => {
     .then(() => getAllPins(pinObj.uid).then(resolve))
     .catch((error) => reject(error));
 });
+const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pin/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch((error) => reject(error));
+});
 
 export {
   getAllPins,
@@ -51,4 +56,5 @@ export {
   deletePin,
   createPin,
   updatePin,
+  getSinglePin,
 };

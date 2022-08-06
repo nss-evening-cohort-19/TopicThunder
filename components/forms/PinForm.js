@@ -3,22 +3,26 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
 import { createPin, updatePin } from '../../api/pinsData';
+import { getUserByUid } from '../../api/usersData';
 
 const initialState = {
-  displayName: '',
   name: '',
-  handle: '',
   image: '',
+  description: '',
 };
 
 function PinForm({ obj }) {
+  const [handle, setHandle] = useState();
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
+    getUserByUid('georgeUid').then((response) => {
+      setHandle(response.handle);
+    });
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj]);
+  }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,11 +36,11 @@ function PinForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updatePin(formInput)
-        .then(() => router.push(`/pin/${obj.handle}`));
+        .then(() => router.push(`/pins/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput, user: handle };
       createPin(payload).then(() => {
-        router.push('/pins/new');
+        router.push('/home');
       });
     }
   };
@@ -48,22 +52,27 @@ function PinForm({ obj }) {
       <div className="card-body">
         <form onSubmit={handleSubmit}>
           <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Title
-              <input type="text" id="title" className="form-control" placeholder="Pin Title" aria-label="title" aria-describedby="pin-desc" value={formInput.name} onChange={handleChange} required />
+            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Pin Title
+              <input type="text" id="pin-name" className="form-control" placeholder="Title of Pin" name="name" value={formInput.name} onChange={handleChange} required />
             </label>
           </div>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Pin Image or Video
-              <input type="url" id="image-name" className="form-control" placeholder="Enter an image url" name="image" value={formInput.image} onChange={handleChange} required />
+              <input type="url" id="image-url" className="form-control" placeholder="Enter an image url" name="image" value={formInput.image} onChange={handleChange} required />
             </label>
           </div>
           <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Description
-              <input type="text" id="description" className="form-control" placeholder="Lorem Ipsum" aria-label="Description" aria-describedby="pin-desc" value={formInput.description} onChange={handleChange} required />
+            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Pin Description
+              <input type="text" id="pin-desc" className="form-control" placeholder="Describe this pin" name="description" value={formInput.description} onChange={handleChange} required />
+            </label>
+          </div>
+          <div className="input-group mb-3">
+            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Destination link
+              <input type="url" id="dest-url" className="form-control" placeholder="Enter an destination url" name="link" value={formInput.link} onChange={handleChange} required />
             </label>
           </div>
           <div className="btn-group-vertical">
-            <button type="button" className="btn btn-dark">{obj.firebaseKey ? 'Update Pin' : 'Create Pin'}</button>
+            <button type="submit" className="btn btn-dark">{obj.firebaseKey ? 'Update' : 'Create'} Pin</button>
           </div>
         </form>
       </div>
@@ -76,12 +85,11 @@ function PinForm({ obj }) {
 
 PinForm.propTypes = {
   obj: PropTypes.shape({
-    title: PropTypes.string,
+    name: PropTypes.string,
     description: PropTypes.string,
-    handle: PropTypes.string,
     image: PropTypes.string,
+    link: PropTypes.string,
     firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
   }),
 };
 
