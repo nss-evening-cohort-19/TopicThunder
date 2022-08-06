@@ -21,21 +21,23 @@ const deleteBoard = (boardFirebaseKey) => new Promise((resolve, reject) => {
 });
 
 const deleteUser = (userHandle) => new Promise((resolve, reject) => {
-  getWhoFollowsUser(userHandle).then((arrayOfUsers) => {
-    const deleteIncomingFollows = arrayOfUsers.map((incomingFollowUser) => removeFollow(incomingFollowUser.handle, userHandle));
-    Promise.all(deleteIncomingFollows).then(resolve).catch(reject);
-  });
-  getWhoUserFollows(userHandle).then((arrayOfUsers) => {
-    const deleteOutgoingFollows = arrayOfUsers.map((outgoingFollowUser) => removeFollow(userHandle, outgoingFollowUser.handle));
-    Promise.all(deleteOutgoingFollows).then(resolve).catch(reject);
+  getWhoFollowsUser(userHandle).then((arrayOfFollowers) => {
+    const deleteIncomingFollows = arrayOfFollowers.map((incomingFollowUser) => removeFollow(incomingFollowUser.handle, userHandle));
+    Promise.all(deleteIncomingFollows).then(() => {
+      getWhoUserFollows(userHandle).then((arrayOfFollows) => {
+        const deleteOutgoingFollows = arrayOfFollows.map((outgoingFollowUser) => removeFollow(userHandle, outgoingFollowUser.handle));
+        Promise.all(deleteOutgoingFollows).then(resolve).catch(reject);
+      });
+    }).catch(reject);
   });
   getPinsByUser(userHandle).then((arrayOfPinObjects) => {
     const deleteUsersPins = arrayOfPinObjects.map((userPin) => deletePin(userPin.firebaseKey));
-    Promise.all(deleteUsersPins).then(resolve).catch(reject);
-  });
-  getBoardsByUser(userHandle).then((arrayOfBaordObjects) => {
-    const deleteUsersBoards = arrayOfBaordObjects.map((userBoard) => deleteBoard(userBoard.firebaseKey));
-    Promise.all(deleteUsersBoards).then(resolve).catch(reject);
+    Promise.all(deleteUsersPins).then(() => {
+      getBoardsByUser(userHandle).then((arrayOfBaordObjects) => {
+        const deleteUsersBoards = arrayOfBaordObjects.map((userBoard) => deleteBoard(userBoard.firebaseKey));
+        Promise.all(deleteUsersBoards).then(resolve).catch(reject);
+      });
+    }).catch(reject);
   });
   deleteUserShallow(userHandle);
 });
