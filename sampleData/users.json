@@ -1,21 +1,18 @@
 {
   "cartyp": {
     "displayName": "Paul McCartney",
-    "firebaseKey": "paulUid",
     "image": "https://s.yimg.com/ny/api/res/1.2/TKcCfYY1abua5Vj6Q1xVvw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTQ4MA--/https://s.yimg.com/uu/api/res/1.2/aUBIhmB.aboNwthBs_VkVg--~B/aD05MDA7dz0xMjAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/the_independent_577/a8b29da8b79c6dbc4a2ce7122fb3604b",
     "uid": "paulUid",
     "handle": "cartyp"
   },
   "jleno": {
     "displayName": "John Lennon",
-    "firebaseKey": "johnUid",
     "image": "https://dailygazette.com/wp-content/uploads/fly-images/183812/web_john_lennon-940x940.jpg",
     "uid": "johnUid",
     "handle": "jleno"
   },
   "georgey": {
     "displayName": "George Harrison",
-    "firebaseKey": "georgeUid",
     "image": "https://faroutmagazine.co.uk/static/uploads/2020/10/This-was-why-George-Harrison-didnt-like-being-a-member-of-The-Beatles.jpg",
     "uid": "georgeUid",
     "handle": "georgey"
@@ -23,8 +20,13 @@
   "starpower": {
     "displayName": "Ringo Starr",
     "image": "https://faroutmagazine.co.uk/static/uploads/2022/07/How-to-play-drums-like-Ringo-Starr.jpg",
-    "firebaseKey": "ringoUid",
     "uid": "ringoUid",
     "handle": "starpower"
+  },
+  "volt": {
+    "displayName": "Patrick Burns",
+    "image": "https://i.pinimg.com/originals/3c/1f/1a/3c1f1a8fceed3ca05eacac90b3a61698.jpg",
+    "uid": "fbgAT9EpKkfafQGY90dI9cTwF2r1",
+    "handle": "volt"
   }
 }

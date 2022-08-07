@@ -5,7 +5,7 @@ const dbUrl = clientCredentials.databaseURL;
 
 const getUserByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
-    .then((response) => resolve(response.data))
+    .then((response) => resolve(Object.values(response.data)[0]))
     .catch((error) => reject(error));
 });
 
@@ -39,9 +39,16 @@ const updateUser = (handle, userObj) => new Promise((resolve, reject) => {
     .then((response) => resolve(response)).catch(reject);
 });
 
+const deleteUserShallow = (handle) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/users/${handle}.json`)
+    .then((response) => resolve(response))
+    .catch((error) => reject(error));
+});
+
 export {
   getUserByUid,
   getUserByHandle,
   createUser,
   updateUser,
+  deleteUserShallow,
 };

@@ -15,17 +15,15 @@ const getPinByFirebaseKey = (pinFirebaseKey) => new Promise((resolve, reject) =>
     .catch((error) => reject(error));
 });
 
-const getPinsByUser = (userFirebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pins.json?orderBy="user"&equalTo="${userFirebaseKey}"`)
+const getPinsByUser = (userHandle) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy="user"&equalTo="${userHandle}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
 
-const deletePin = (firebaseKey, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/pins/${firebaseKey}.json`, uid)
-    .then(() => {
-      getAllPins(uid).then((pinsArray) => resolve(pinsArray));
-    })
+const deletePinShallow = (pinFirebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/pins/${pinFirebaseKey}.json`)
+    .then((response) => resolve(response))
     .catch((error) => reject(error));
 });
 
@@ -43,18 +41,12 @@ const updatePin = (pinObj) => new Promise((resolve, reject) => {
     .then(() => getAllPins(pinObj.uid).then(resolve))
     .catch((error) => reject(error));
 });
-const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pin/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
-});
 
 export {
   getAllPins,
   getPinByFirebaseKey,
   getPinsByUser,
-  deletePin,
+  deletePinShallow,
   createPin,
   updatePin,
-  getSinglePin,
 };

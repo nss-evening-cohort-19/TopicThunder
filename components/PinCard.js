@@ -2,7 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { deletePin } from '../api/pinsData';
+import { deletePin } from '../api/mergedData';
+import { renderAbsoluteTime, renderRelativeTime } from '../utils/time';
 
 function PinCard({ pinObj, onUpdate }) {
   const deleteThisPin = () => {
@@ -22,9 +23,9 @@ function PinCard({ pinObj, onUpdate }) {
           </Link>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">An item</li>
-          <li className="list-group-item">A second item</li>
-          <li className="list-group-item">A third item</li>
+          <li className="list-group-item">Created by {pinObj.user}</li>
+          <li className="list-group-item">Created on {renderAbsoluteTime(pinObj.time)}</li>
+          <li className="list-group-item">Created {renderRelativeTime(pinObj.time)}</li>
         </ul>
         <div className="card-body">
           <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
@@ -42,7 +43,8 @@ PinCard.propTypes = {
     name: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string,
-    boardName: PropTypes.string,
+    user: PropTypes.string,
+    time: PropTypes.number,
     firebaseKey: PropTypes.string,
   }),
   onUpdate: PropTypes.func.isRequired,

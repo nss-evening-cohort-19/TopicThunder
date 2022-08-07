@@ -1,10 +1,10 @@
 {
-    "georgeUid==johnUid": "johnUid",
-    "georgeUid==paulUid": "paulUid",
-    "georgeUid==ringoUid": "ringoUid",
-    "johnUid==georgeUid": "georgeUid",
-    "johnUid==paulUid": "paulUid",
-    "johnUid==ringoUid": "ringoUid",
-    "paulUid==johnUid": "johnUid",
-    "paulUid==ringoUid": "ringoUid"
+    "georgey==jleno": "jleno",
+    "georgey==cartyp": "cartyp",
+    "georgey==starpower": "starpower",
+    "jleno==georgey": "georgey",
+    "jleno==cartyp": "cartyp",
+    "jleno==starpower": "starpower",
+    "cartyp==jleno": "jleno",
+    "cartyp==starpower": "starpower"
   }
