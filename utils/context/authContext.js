@@ -29,6 +29,10 @@ const AuthProvider = (props) => {
         setUser((prevState) => ({
           ...prevState, handle: response.handle,
         }));
+      } else {
+        setUser((prevState) => ({
+          ...prevState, handle: null,
+        }));
       }
     });
   };
