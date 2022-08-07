@@ -1,31 +1,34 @@
-// import { Button } from 'react-bootstrap';
-// import { signOut } from '../utils/auth';
+import React, { useState, useEffect } from 'react';
+import { getAllPins } from '../api/pinsData';
 import { useAuth } from '../utils/context/authContext';
-// import { getBoardsThatContainGivenPin } from '../api/collectionsData';
+import PinCardForGrid from '../components/PinCardForGrid';
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossOrigin="anonymous" />;
+export default function HomePage() {
+  const [pins, setPins] = useState([]);
 
-function Home() {
   const { user } = useAuth();
 
+  const getAllThePins = () => {
+    getAllPins(user.uid).then((pinsArray) => {
+      setPins(pinsArray);
+    });
+  };
+
+  useEffect(() => {
+    getAllThePins();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        width: '90vw',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Hello {user.displayName}! </h1>
-      <p>The below is a test button I have been using to test data manipulations</p>
-      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => console.warn(user.handle)}>
-        Sign Out
-      </button>
-    </div>
+    <>
+      <div className="gridContainer">
+        {pins.map((pin) => (
+          <PinCardForGrid pinObj={pin} key={pin.firebaseKey} onUpdate={getAllPins} />
+        ))}
+        {/* <button type="button" size="lg" className="btn signBtn btn-primary btn-large" onClick={() => getMultiplePinDetails('cartyp').then(console.warn)}>
+          Test Button
+        </button> */}
+      </div>
+    </>
   );
 }
-
-export default Home;

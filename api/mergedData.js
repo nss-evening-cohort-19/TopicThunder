@@ -7,17 +7,19 @@ import { deleteUserShallow } from './usersData';
 const deletePin = (pinFirebaseKey) => new Promise((resolve, reject) => {
   getBoardsThatContainGivenPin(pinFirebaseKey).then((response) => {
     const removePinFromBoards = response.map((board) => removePinFromBoard(pinFirebaseKey, board.firebaseKey));
-    Promise.all(removePinFromBoards).then(resolve).catch(reject);
+    Promise.all(removePinFromBoards).then(() => {
+      deletePinShallow(pinFirebaseKey).then(resolve);
+    }).catch(reject);
   });
-  deletePinShallow(pinFirebaseKey);
 });
 
 const deleteBoard = (boardFirebaseKey) => new Promise((resolve, reject) => {
   getPinsContainedByGivenBoard(boardFirebaseKey).then((response) => {
     const removePinsFromBoard = response.map((pin) => removePinFromBoard(pin.firebaseKey, boardFirebaseKey));
-    Promise.all(removePinsFromBoard).then(resolve).catch(reject);
+    Promise.all(removePinsFromBoard).then(() => {
+      deleteBoardShallow(boardFirebaseKey).then(resolve);
+    }).catch(reject);
   });
-  deleteBoardShallow(boardFirebaseKey);
 });
 
 const deleteUser = (userHandle) => new Promise((resolve, reject) => {
@@ -26,20 +28,22 @@ const deleteUser = (userHandle) => new Promise((resolve, reject) => {
     Promise.all(deleteIncomingFollows).then(() => {
       getWhoUserFollows(userHandle).then((arrayOfFollows) => {
         const deleteOutgoingFollows = arrayOfFollows.map((outgoingFollowUser) => removeFollow(userHandle, outgoingFollowUser.handle));
-        Promise.all(deleteOutgoingFollows).then(resolve).catch(reject);
+        Promise.all(deleteOutgoingFollows).then(() => {
+          getPinsByUser(userHandle).then((arrayOfPinObjects) => {
+            const deleteUsersPins = arrayOfPinObjects.map((userPin) => deletePin(userPin.firebaseKey));
+            Promise.all(deleteUsersPins).then(() => {
+              getBoardsByUser(userHandle).then((arrayOfBaordObjects) => {
+                const deleteUsersBoards = arrayOfBaordObjects.map((userBoard) => deleteBoard(userBoard.firebaseKey));
+                Promise.all(deleteUsersBoards).then(() => {
+                  deleteUserShallow(userHandle).then(resolve);
+                }).catch(reject);
+              });
+            }).catch(reject);
+          });
+        }).catch(reject);
       });
     }).catch(reject);
   });
-  getPinsByUser(userHandle).then((arrayOfPinObjects) => {
-    const deleteUsersPins = arrayOfPinObjects.map((userPin) => deletePin(userPin.firebaseKey));
-    Promise.all(deleteUsersPins).then(() => {
-      getBoardsByUser(userHandle).then((arrayOfBaordObjects) => {
-        const deleteUsersBoards = arrayOfBaordObjects.map((userBoard) => deleteBoard(userBoard.firebaseKey));
-        Promise.all(deleteUsersBoards).then(resolve).catch(reject);
-      });
-    }).catch(reject);
-  });
-  deleteUserShallow(userHandle);
 });
 
 export {

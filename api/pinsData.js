@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { clientCredentials } from '../utils/client';
+import { getBoardsThatContainGivenPin } from './collectionsData';
+import { getUserByHandle } from './usersData';
 
 const dbUrl = clientCredentials.databaseURL;
 
@@ -9,15 +11,27 @@ const getAllPins = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const getPinByFirebaseKey = (pinFirebaseKey) => new Promise((resolve, reject) => {
+const getSinglePinDetails = (pinFirebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/pins/${pinFirebaseKey}.json`)
-    .then((response) => resolve(response.data))
+    .then((originalPinObject) => {
+      getBoardsThatContainGivenPin(pinFirebaseKey).then((arrayOfBoardObjects) => {
+        getUserByHandle(originalPinObject.data.user).then((userObj) => {
+          const newPinObject = originalPinObject.data;
+          newPinObject.user = userObj;
+          newPinObject.boards = arrayOfBoardObjects;
+          resolve(newPinObject);
+        });
+      });
+    })
     .catch((error) => reject(error));
 });
 
-const getPinsByUser = (userHandle) => new Promise((resolve, reject) => {
+const getMultiplePinDetails = (userHandle) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/pins.json?orderBy="user"&equalTo="${userHandle}"`)
-    .then((response) => resolve(Object.values(response.data)))
+    .then((arrayOfPins) => {
+      const pinDetailPromises = (Object.values(arrayOfPins.data)).map((pin) => getSinglePinDetails(pin.firebaseKey));
+      Promise.all(pinDetailPromises).then(resolve).catch(reject);
+    })
     .catch((error) => reject(error));
 });
 
@@ -44,8 +58,8 @@ const updatePin = (pinObj) => new Promise((resolve, reject) => {
 
 export {
   getAllPins,
-  getPinByFirebaseKey,
-  getPinsByUser,
+  getSinglePinDetails,
+  getMultiplePinDetails,
   deletePinShallow,
   createPin,
   updatePin,

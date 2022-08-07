@@ -1,6 +1,5 @@
 {
   "-N8V2ildZc3NmomMsuSF": {
-    "cover": "-N8V45RB3KJpf4kMqBnw",
     "description": "Some weird stuff my girl would dig",
     "firebaseKey": "-N8V2ildZc3NmomMsuSF",
     "name": "For Yoko",
@@ -8,11 +7,17 @@
     "user": "jleno"
   },
   "-N8V3GjLk43nZGeB1GuL": {
-    "cover": "-N8VAPGdW16HueQfpdnS",
     "description": "Please like and follow",
     "firebaseKey": "-N8V3GjLk43nZGeB1GuL",
     "name": "Paul McCartney's Greatest Hits",
     "time": 1237489,
     "user": "cartyp"
+  },
+  "-N4V3GjLr43nZGeB1dx1": {
+    "description": "I have none, can't you imagine it?",
+    "firebaseKey": "N4V3GjLr43nZGeB1dx1",
+    "name": "Possessions",
+    "time": 1237481,
+    "user": "jleno"
   }
 }
