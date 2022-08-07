@@ -21,10 +21,10 @@ const getPinsByUser = (userFirebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deletePin = (firebaseKey, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/pins/${firebaseKey}.json`, uid)
+const deletePin = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/pin/${firebaseKey}.json`)
     .then(() => {
-      getAllPins(uid).then((pinsArray) => resolve(pinsArray));
+      getAllPins().then((pinsArray) => resolve(pinsArray));
     })
     .catch((error) => reject(error));
 });
@@ -40,11 +40,11 @@ const createPin = (pinObj) => new Promise((resolve, reject) => {
 
 const updatePin = (pinObj) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/pins/${pinObj.firebaseKey}.json`, pinObj)
-    .then(() => getAllPins(pinObj.uid).then(resolve))
+    .then(() => getAllPins(pinObj.user).then(resolve))
     .catch((error) => reject(error));
 });
 const getSinglePin = (firebaseKey) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/pin/${firebaseKey}.json`)
+  axios.get(`${dbUrl}/pins/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch((error) => reject(error));
 });

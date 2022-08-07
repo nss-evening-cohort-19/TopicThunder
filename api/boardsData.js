@@ -20,9 +20,22 @@ const getBoardsByUser = (userFirebaseKey) => new Promise((resolve, reject) => {
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
-
+const deleteSingleBoard = (firebaseKey, uid) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/boards/${firebaseKey}.json`, uid)
+    .then(() => {
+      getAllBoards(uid).then((boardsArray) => resolve(boardsArray));
+    })
+    .catch((error) => reject(error));
+});
+const getBoardPins = (boardId) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/pins.json?orderBy= "board_id" &equalTo="${boardId}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
 export {
   getAllBoards,
   getBoardByFirebaseKey,
   getBoardsByUser,
+  deleteSingleBoard,
+  getBoardPins,
 };

@@ -49,12 +49,12 @@ function ProfileForm({ obj }) {
         <form onSubmit={handleSubmit}>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Profile Image
-              <input type="url" id="image" className="form-control" placeholder="url" aria-label="image" aria-describedby="basic-addon1" value={formInput.image || ''} onChange={handleChange} required />
+              <input type="url" id="image-url" className="form-control" placeholder="url" name="image" value={formInput.image} onChange={handleChange} required />
             </label>
           </div>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Display Name
-              <input type="text" id="displayName" className="form-control" placeholder="JJ" aria-label="displayName" aria-describedby="basic-addon1" value={formInput.displayName} onChange={handleChange} required />
+              <input type="text" id="display-name" className="form-control" placeholder="JJ" name="name" value={formInput.name} onChange={handleChange} required />
             </label>
           </div>
           <div className="input-group mb-3">
@@ -63,7 +63,7 @@ function ProfileForm({ obj }) {
             </label>
           </div>
           <div className="btn-group-vertical">
-            <button type="button" className="btn btn-dark">{obj.firebaseKey ? 'Update' : 'Create'}</button>
+            <button type="button" className="btn btn-dark">{obj.firebaseKey ? 'Update' : 'Create'} Profile</button>
             <button type="button" className="btn btn-link">Continue as guest</button>
           </div>
         </form>
