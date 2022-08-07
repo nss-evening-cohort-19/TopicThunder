@@ -13,7 +13,7 @@ const initialState = {
 function ProfileForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
-  const { user } = useAuth();
+  const { user, checkAndSetHandle } = useAuth();
 
   useEffect(() => {
     if (obj.handle) setFormInput(obj);
@@ -38,6 +38,7 @@ function ProfileForm({ obj }) {
       const payloadKey = formInput.handle;
       packagedPayload[payloadKey] = payloadValue;
       createUser(packagedPayload).then(() => {
+        checkAndSetHandle(user.uid);
         router.push('/home');
       });
     }
