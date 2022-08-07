@@ -35,7 +35,7 @@ function PinForm({ obj }) {
     } else {
       const payload = { ...formInput, user: user.handle, time: new Date().getTime() };
       createPin(payload).then(() => {
-        router.push('/home');
+        router.push('/');
       });
     }
   };

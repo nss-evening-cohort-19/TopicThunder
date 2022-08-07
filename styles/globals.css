@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  background-color: rgb(250, 248, 248);
+  background-color: rgb(255, 255, 255);
 }
 .signOutPage {
   display: flex;
@@ -57,4 +57,50 @@ body {
 }
 .search-me {
   width: 100%;
+}
+
+.gridContainer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.gridCard {
+  width: 20rem;
+  margin: 10px;
+  border-radius: 20px;
+  border: none;
+}
+
+.hoverContainer {
+  padding: 20px;
+  text-align: center;
+  height: 100%;
+  font-size: 2rem;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.58);
+  color: rgb(255, 255, 255);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s, visibility .2s;
+}
+
+.hoverDescription {
+  font-size: 1rem;
+}
+
+.gridCard:hover .hoverContainer {
+  visibility: visible;
+  opacity: 1;
+}
+
+.gridCard > img {
+  border-radius: 20px;
 }
