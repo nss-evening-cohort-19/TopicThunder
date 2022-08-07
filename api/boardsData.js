@@ -15,8 +15,8 @@ const getSingleBoardDetails = (boardFirebaseKey) => new Promise((resolve, reject
   axios.get(`${dbUrl}/boards/${boardFirebaseKey}.json`)
     .then((originalBoardObject) => {
       getPinsContainedByGivenBoard(boardFirebaseKey).then((arrayOfPinObjects) => {
-        getUserByHandle(originalBoardObject.user).then((userObj) => {
-          const newBoardObject = originalBoardObject;
+        getUserByHandle(originalBoardObject.data.user).then((userObj) => {
+          const newBoardObject = originalBoardObject.data;
           newBoardObject.user = userObj;
           newBoardObject.pins = arrayOfPinObjects;
           resolve(newBoardObject);
@@ -29,7 +29,7 @@ const getSingleBoardDetails = (boardFirebaseKey) => new Promise((resolve, reject
 const getMultipleBoardDetails = (userHandle) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/boards.json?orderBy="user"&equalTo="${userHandle}"`)
     .then((arrayOfBoards) => {
-      const boardDetailPromises = arrayOfBoards.map((board) => getSingleBoardDetails(board));
+      const boardDetailPromises = (Object.values(arrayOfBoards.data)).map((board) => getSingleBoardDetails(board.firebaseKey));
       Promise.all(boardDetailPromises).then(resolve).catch(reject);
     })
     .catch((error) => reject(error));

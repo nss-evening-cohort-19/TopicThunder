@@ -25,7 +25,7 @@ function PinCard({ pinObj }) {
           </Link>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">Created by {pinObj.user}</li>
+          <li className="list-group-item">Created by {pinObj.user.handle}</li>
           <li className="list-group-item">Created on {renderAbsoluteTime(pinObj.time)}</li>
           <li className="list-group-item">Created {renderRelativeTime(pinObj.time)}</li>
         </ul>
@@ -45,19 +45,38 @@ PinCard.propTypes = {
     name: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string,
-    user: PropTypes.string,
+    boards: PropTypes.arrayOf(PropTypes.shape({
+      description: PropTypes.string,
+      firebaseKey: PropTypes.string,
+      name: PropTypes.string,
+      time: PropTypes.number,
+      user: PropTypes.string,
+    })),
+    user: PropTypes.shape({
+      displayName: PropTypes.string,
+      handle: PropTypes.string,
+      image: PropTypes.string,
+      uid: PropTypes.string,
+    }),
     time: PropTypes.number,
     firebaseKey: PropTypes.string,
   }),
 };
 
 PinCard.defaultProps = {
-  pinObj: PropTypes.shape({
-    name: 'Some crap',
-    image: 'https://media1.giphy.com/media/ZtMkorgeyRu5q/200w.gif?cid=82a1493bp86gd572cklybuzdd0y24rt1ea0p0ih3wpxjfggw&rid=200w.gif&ct=g',
-    link: 'Someaddress@blabla.com',
-    firebaseKey: '123',
-  }),
+  pinObj: {
+    name: '',
+    image: '',
+    firebaseKey: '',
+    link: '',
+    boards: [{ default: 'default' }],
+    user: {
+      displayName: '',
+      handle: '',
+      image: '',
+      uid: '',
+    },
+  },
 };
 
 export default PinCard;

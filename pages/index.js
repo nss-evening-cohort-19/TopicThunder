@@ -10,7 +10,6 @@ export default function HomePage() {
 
   const getAllThePins = () => {
     getAllPins(user.uid).then((pinsArray) => {
-      console.warn(pinsArray);
       setPins(pinsArray);
     });
   };
@@ -25,8 +24,10 @@ export default function HomePage() {
       <div className="gridContainer">
         {pins.map((pin) => (
           <PinCardForGrid pinObj={pin} key={pin.firebaseKey} onUpdate={getAllPins} />
-
         ))}
+        {/* <button type="button" size="lg" className="btn signBtn btn-primary btn-large" onClick={() => getMultiplePinDetails('cartyp').then(console.warn)}>
+          Test Button
+        </button> */}
       </div>
     </>
   );

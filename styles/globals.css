@@ -60,7 +60,7 @@ body {
 }
 
 .gridContainer {
-  height: 100vh;
+  height: 130vh;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
