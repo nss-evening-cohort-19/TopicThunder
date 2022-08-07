@@ -1,5 +1,5 @@
 // import { Button } from 'react-bootstrap';
-import { signOut } from '../utils/auth';
+// import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 // import { getBoardsThatContainGivenPin } from '../api/collectionsData';
 
@@ -21,7 +21,7 @@ function Home() {
     >
       <h1>Hello {user.displayName}! </h1>
       <p>The below is a test button I have been using to test data manipulations</p>
-      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => signOut()}>
+      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => console.warn(user.handle)}>
         Sign Out
       </button>
     </div>
