@@ -21,8 +21,8 @@ function Home() {
     >
       <h1>Hello {user.displayName}! </h1>
       <p>The below is a test button I have been using to test data manipulations</p>
-      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={signOut}>
-        Get user by handle
+      <button variant="danger" type="button" size="lg" className="copy-btn" onClick={() => signOut()}>
+        Sign Out
       </button>
     </div>
   );

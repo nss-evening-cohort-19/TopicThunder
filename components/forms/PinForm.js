@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
 import { createPin, updatePin } from '../../api/pinsData';
-import { getUserByUid } from '../../api/usersData';
 
 const initialState = {
   name: '',
@@ -12,15 +11,11 @@ const initialState = {
 };
 
 function PinForm({ obj }) {
-  const [handle, setHandle] = useState();
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
-    getUserByUid('georgeUid').then((response) => {
-      setHandle(response.handle);
-    });
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
@@ -38,7 +33,7 @@ function PinForm({ obj }) {
       updatePin(formInput)
         .then(() => router.push(`/pin/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, user: handle };
+      const payload = { ...formInput, user: user.handle, time: new Date().getTime() };
       createPin(payload).then(() => {
         router.push('/home');
       });

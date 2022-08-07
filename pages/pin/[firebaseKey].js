@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { viewPinDetails } from '../../api/mergedData';
+import { getPinByFirebaseKey } from '../../api/pinsData';
 import PinCard from '../../components/PinCard';
 
 export default function IndPinPage() {
@@ -10,12 +10,12 @@ export default function IndPinPage() {
   const { firebaseKey } = router.query;
 
   function getPinDetails() {
-    viewPinDetails().then(setPinDetails);
+    getPinByFirebaseKey().then(setPinDetails);
   }
 
   useEffect(() => {
     getPinDetails();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseKey]);
 
   return (
@@ -23,7 +23,7 @@ export default function IndPinPage() {
       <PinCard
         pinObj={pinDetails}
         onUpdate={() => {
-          viewPinDetails(firebaseKey.then(setPinDetails));
+          getPinByFirebaseKey(firebaseKey.then(setPinDetails));
         }}
       />
     </div>

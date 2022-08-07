@@ -5,13 +5,13 @@
         "body": "Why are you two so weird",
         "firebaseKey": "-N8V4Tm46KXniYN96m9O",
         "time": 1234362789,
-        "user": "paulUid"
+        "user": "cartyp"
       },
       "-N8V4trWmyKhibfwztmq": {
         "body": "John I think it's beautiful",
         "firebaseKey": "-N8V4Tm46KXniYN96m9O",
         "time": 22234362789,
-        "user": "georgeUid"
+        "user": "georgey"
       }
     },
     "description": "It's prickly but will open your mind, just like my Yoko",
@@ -20,7 +20,7 @@
     "link": "https://psychonautwiki.org/wiki/Echinopsis_peruviana",
     "name": "Peruvian Torch Cactus",
     "time": 12362781,
-    "user": "johnUid"
+    "user": "jleno"
   },
   "-N8V5pPp6XP1l-blMM_R": {
     "description": "It's me and yoko lol",
@@ -33,17 +33,17 @@
         "firebaseKey": "-N8V6KgWYwZBfSf2xBtn",
         "positive": true,
         "type": "heart",
-        "user": "ringoUid"
+        "user": "starpower"
       },
       "-N8V7lhkTAFuCaCl_qeb": {
         "firebaseKey": "-N8V7lhkTAFuCaCl_qeb",
         "positive": true,
         "type": "laugh",
-        "user": "georgeUid"
+        "user": "georgey"
       }
     },
     "time": 122362781,
-    "user": "johnUid"
+    "user": "jleno"
   },
   "-N8V8k1eh2Ox25ZPSsxN": {
     "description": "It's a song I wrote about civil rights. Everyone loves this song.",
@@ -56,11 +56,11 @@
         "firebaseKey": "-N8V90YQHweNRhRbe9bF",
         "positive": true,
         "type": "heart",
-        "user": "paulUid"
+        "user": "cartyp"
       }
     },
     "time": 222362782,
-    "user": "paulUid"
+    "user": "cartyp"
   },
   "-N8V9cihirsHg--gjYbl": {
     "description": "Do you understand how popular this song is?",
@@ -69,15 +69,15 @@
     "link": "https://en.wikipedia.org/wiki/Yesterday_(Beatles_song)",
     "name": "Yesterday",
     "time": 222362782,
-    "user": "paulUid"
+    "user": "cartyp"
   },
   "-N8VAPGdW16HueQfpdnS": {
     "description": "This is about John Lennon's son, whom he never visits.",
     "firebaseKey": "-N8VAPGdW16HueQfpdnS",
-    "image": "https://faroutmagazine.co.uk/the-beatles-paul-mccartney-hey-jude-the-story-behind-the-song/",
+    "image": "https://i.pinimg.com/1200x/6b/ea/bb/6beabb9b5511194fb77d0695ecd9f773.jpg",
     "link": "https://en.wikipedia.org/wiki/Hey_Jude",
     "name": "Hey Jude",
     "time": 222362783,
-    "user": "paulUid"
+    "user": "cartyp"
   }
 }

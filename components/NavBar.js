@@ -2,10 +2,24 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { BsFillChatDotsFill, BsBellFill, BsPersonCircle } from 'react-icons/bs';
+import { useAuth } from '../utils/context/authContext';
+import { getUserByUid } from '../api/usersData';
 // import { signOut } from '../utils/auth';
 
 export default function NavBar() {
+  const { user } = useAuth();
+  const router = useRouter();
+  const checkIfUserExistsThenRoute = () => {
+    getUserByUid(user.uid).then((response) => {
+      if (response) {
+        router.push(`/profile/${response.handle}`);
+      } else {
+        router.push('/profile/new');
+      }
+    });
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg">
@@ -50,9 +64,9 @@ export default function NavBar() {
             <button type="button" className="icons btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
               <h3><BsFillChatDotsFill /></h3>
             </button>
-            <Link passHref href="/profile/new">
+            <button type="button" onClick={() => checkIfUserExistsThenRoute()} className="icons btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
               <h3><BsPersonCircle /></h3>
-            </Link>
+            </button>
             {/* <button type="button" className="btn btn-outline-danger" onClick={signOut}>Log Out</button> */}
           </div>
         </div>

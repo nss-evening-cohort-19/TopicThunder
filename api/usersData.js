@@ -11,7 +11,7 @@ const getAllUsers = () => new Promise((resolve, reject) => {
 
 const getUserByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
-    .then((response) => resolve(response.data))
+    .then((response) => resolve(Object.values(response.data)[0]))
     .catch((error) => reject(error));
 });
 
@@ -45,18 +45,17 @@ const updateUser = (handle, userObj) => new Promise((resolve, reject) => {
     .then((response) => resolve(response)).catch(reject);
 });
 
-const deleteUser = (handle, uid) => new Promise((resolve, reject) => {
-  axios.delete(`${dbUrl}/users/${handle}.json`, uid)
-    .then(() => {
-      getAllUsers().then((userArray) => resolve(userArray));
-    })
+const deleteUserShallow = (handle) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/users/${handle}.json`)
+    .then((response) => resolve(response))
     .catch((error) => reject(error));
 });
+
 export {
   getUserByUid,
   getUserByHandle,
   createUser,
   updateUser,
-  deleteUser,
   getAllUsers,
+  deleteUserShallow,
 };
