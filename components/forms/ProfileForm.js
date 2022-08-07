@@ -30,12 +30,15 @@ function ProfileForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.handle) {
-      updateUser(formInput)
+      updateUser(obj.handle, formInput)
         .then(() => router.push(`/profile/${obj.handle}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
-      createUser(payload).then(() => {
-        router.push('/profiles');
+      const payloadValue = { ...formInput, uid: user.uid };
+      const packagedPayload = {};
+      const payloadKey = formInput.handle;
+      packagedPayload[payloadKey] = payloadValue;
+      createUser(packagedPayload).then(() => {
+        router.push('/home');
       });
     }
   };
@@ -48,21 +51,54 @@ function ProfileForm({ obj }) {
         <form onSubmit={handleSubmit}>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Profile Image
-              <input type="url" id="image" className="form-control" placeholder="url" aria-label="image" aria-describedby="basic-addon1" value={formInput.image} onChange={handleChange} required />
+              <input
+                type="url"
+                id="image"
+                name="image"
+                className="form-control"
+                placeholder="Enter a URL"
+                aria-label="image"
+                aria-describedby="basic-addon1"
+                value={formInput.image}
+                onChange={handleChange}
+                required
+              />
             </label>
           </div>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Display Name
-              <input type="text" id="displayName" className="form-control" placeholder="JJ" aria-label="displayName" aria-describedby="basic-addon1" value={formInput.displayName} onChange={handleChange} required />
+              <input
+                type="text"
+                id="displayName"
+                name="displayName"
+                className="form-control"
+                placeholder="Enter your name"
+                aria-label="displayName"
+                aria-describedby="basic-addon1"
+                value={formInput.displayName}
+                onChange={handleChange}
+                required
+              />
             </label>
           </div>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Username
-              <input type="text" id="handle" className="form-control" placeholder="JohnJacob" aria-label="Username" aria-describedby="basic-addon1" value={formInput.handle} onChange={handleChange} required />
+              <input
+                type="text"
+                id="handle"
+                name="handle"
+                className="form-control"
+                placeholder="Enter a username"
+                aria-label="Username"
+                aria-describedby="basic-addon1"
+                value={formInput.handle}
+                onChange={handleChange}
+                required
+              />
             </label>
           </div>
           <div className="btn-group-vertical">
-            <button type="button" className="btn btn-dark">{obj.handle ? 'Update' : 'Create'}</button>
+            <button type="button" className="btn btn-dark" onClick={handleSubmit}>{obj.handle ? 'Update' : 'Create'}</button>
             <button type="button" className="btn btn-link">Continue as guest</button>
           </div>
         </form>
