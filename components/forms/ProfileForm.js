@@ -6,7 +6,6 @@ import { createUser, updateUser } from '../../api/usersData';
 
 const initialState = {
   displayName: '',
-  name: '',
   handle: '',
   image: '',
 };
@@ -17,7 +16,7 @@ function ProfileForm({ obj }) {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (obj.firebaseKey) setFormInput(obj);
+    if (obj.handle) setFormInput(obj);
   }, [obj]);
 
   const handleChange = (e) => {
@@ -49,7 +48,7 @@ function ProfileForm({ obj }) {
         <form onSubmit={handleSubmit}>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Profile Image
-              <input type="url" id="image" className="form-control" placeholder="url" aria-label="image" aria-describedby="basic-addon1" value={formInput.image || ''} onChange={handleChange} required />
+              <input type="url" id="image" className="form-control" placeholder="url" aria-label="image" aria-describedby="basic-addon1" value={formInput.image} onChange={handleChange} required />
             </label>
           </div>
           <div className="input-group mb-3">
@@ -59,11 +58,11 @@ function ProfileForm({ obj }) {
           </div>
           <div className="input-group mb-3">
             <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Username
-              <input type="text" id="handle" className="form-control" placeholder="JohnJacob" aria-label="Username" aria-describedby="basic-addon1" onChange={handleChange} required />
+              <input type="text" id="handle" className="form-control" placeholder="JohnJacob" aria-label="Username" aria-describedby="basic-addon1" value={formInput.handle} onChange={handleChange} required />
             </label>
           </div>
           <div className="btn-group-vertical">
-            <button type="button" className="btn btn-dark">{obj.firebaseKey ? 'Update' : 'Create'}</button>
+            <button type="button" className="btn btn-dark">{obj.handle ? 'Update' : 'Create'}</button>
             <button type="button" className="btn btn-link">Continue as guest</button>
           </div>
         </form>
@@ -78,10 +77,8 @@ function ProfileForm({ obj }) {
 ProfileForm.propTypes = {
   obj: PropTypes.shape({
     displayName: PropTypes.string,
-    name: PropTypes.string,
     handle: PropTypes.string,
     image: PropTypes.string,
-    firebaseKey: PropTypes.string,
     uid: PropTypes.string,
   }),
 };
