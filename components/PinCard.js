@@ -10,7 +10,7 @@ function PinCard({ pinObj }) {
   const router = useRouter();
   const deleteThisPin = () => {
     if (window.confirm(`Delete ${pinObj.name}?`)) {
-      deletePin(pinObj.firebaseKey).then(() => router.push('/home'));
+      deletePin(pinObj.firebaseKey).then(() => router.push('/'));
     }
   };
 
