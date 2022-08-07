@@ -2,13 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { deletePin } from '../api/mergedData';
 import { renderAbsoluteTime, renderRelativeTime } from '../utils/time';
 
-function PinCard({ pinObj, onUpdate }) {
+function PinCard({ pinObj }) {
+  const router = useRouter();
   const deleteThisPin = () => {
     if (window.confirm(`Delete ${pinObj.name}?`)) {
-      deletePin(pinObj.firebaseKey).then(() => onUpdate());
+      deletePin(pinObj.firebaseKey).then(() => router.push('/home'));
     }
   };
 
@@ -47,7 +49,6 @@ PinCard.propTypes = {
     time: PropTypes.number,
     firebaseKey: PropTypes.string,
   }),
-  onUpdate: PropTypes.func.isRequired,
 };
 
 PinCard.defaultProps = {

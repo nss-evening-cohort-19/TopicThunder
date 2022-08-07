@@ -1,28 +1,29 @@
-import React from 'react';
-// import { useRouter } from 'next/router';
+/* eslint-disable @next/next/no-img-element */
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { getPinByFirebaseKey } from '../../api/pinsData';
 import PinCard from '../../components/PinCard';
 
-function ViewPinCard() {
-  // const [pinDetails, setPinDetails] = useState({});
-  // const router = useRouter();
-  // const deleteIndPin = (pinObjects, onUpdate) => {
-  //   if (window.confirm(`Delete ${pinObjects.name}?`)) {
-  //     deletePin(pinObjects.firebaseKey).then(() => onUpdate());
-  //   }
-  // };
+export default function IndPinPage(onUpdate) {
+  const router = useRouter();
+  const [pinDetails, setPinDetails] = useState({});
+  const { firebaseKey } = router.query;
 
-  // const { firebaseKey } = router.query;
+  function getPinDetails(key) {
+    getPinByFirebaseKey(key).then(setPinDetails);
+  }
 
-  // useEffect(() => {
-  //   viewPinDetails(firebaseKey).then(setPinDetails);
-  // }, [firebaseKey]);
+  useEffect(() => {
+    getPinDetails(firebaseKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firebaseKey]);
 
   return (
-    <>
-      <div>Individual Pin Card</div>
-      <PinCard />
-    </>
+    <div className="pinContainer">
+      <PinCard
+        pinObj={pinDetails}
+        onUpdate={onUpdate}
+      />
+    </div>
   );
 }
-
-export default ViewPinCard;

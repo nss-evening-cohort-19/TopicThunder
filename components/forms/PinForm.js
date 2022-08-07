@@ -31,7 +31,7 @@ function PinForm({ obj }) {
     e.preventDefault();
     if (obj.firebaseKey) {
       updatePin(formInput)
-        .then(() => router.push(`/pins/${obj.firebaseKey}`));
+        .then(() => router.push(`/pin/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, user: user.handle, time: new Date().getTime() };
       createPin(payload).then(() => {
@@ -42,7 +42,7 @@ function PinForm({ obj }) {
   return (
     <div className="card text-center text-dark bg-light mb-3">
       <div className="card-header">
-        Create Pin
+        Pin Form
       </div>
       <div className="card-body">
         <form onSubmit={handleSubmit}>
