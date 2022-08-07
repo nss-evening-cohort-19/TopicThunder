@@ -33,7 +33,7 @@ function PinForm({ obj }) {
       updatePin(formInput)
         .then(() => router.push(`/pins/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, user: user.handle };
+      const payload = { ...formInput, user: user.handle, time: new Date().getTime() };
       createPin(payload).then(() => {
         router.push('/home');
       });
