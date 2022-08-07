@@ -17,7 +17,9 @@ function PinCard({ pinObj, onUpdate }) {
         <img src={pinObj.image} className="card-img-top" alt={pinObj.link} />
         <div className="card-body">
           <h5 className="card-title">{pinObj.name}</h5>
-          <p className="card-text">{pinObj.boardName}</p>
+          <Link passHref href="/">
+            <p className="card-text">{pinObj.link}</p>
+          </Link>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">An item</li>
