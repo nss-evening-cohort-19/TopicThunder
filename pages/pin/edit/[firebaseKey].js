@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { getPinByFirebaseKey } from '../../../api/pinsData';
+import { collectionsGetPinByFirebaseKey } from '../../../api/collectionsData';
 import PinForm from '../../../components/forms/PinForm';
 
 export default function EditPin() {
@@ -10,7 +10,7 @@ export default function EditPin() {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    getPinByFirebaseKey(firebaseKey).then(setEditPins);
+    collectionsGetPinByFirebaseKey(firebaseKey).then(setEditPins);
   }, [firebaseKey]);
 
   return (<PinForm obj={editPins} />);

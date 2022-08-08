@@ -60,10 +60,9 @@ body {
 }
 
 .gridContainer {
-  height: 130vh;
   display: flex;
+  width: 80%;
   flex-direction: column;
-  flex-wrap: wrap;
   align-content: flex-start;
 }
 
@@ -103,4 +102,10 @@ body {
 
 .gridCard > img {
   border-radius: 20px;
+}
+.profile-pic{
+  width: 20rem;
+  margin: 10px;
+  border-radius: 20px;
+  border: none;
 }

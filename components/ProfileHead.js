@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 // import { getUserByUid } from '../api/usersData';
 
@@ -15,10 +16,13 @@ function ProfilePage({ image, displayName, handle }) {
             <li className="list-group-item">Followers: {followedBy.length}</li>
             <li className="list-group-item">Follows: {usersFollowed.length}</li>
           </ul> */}
-        </div>
+        </div><hr />
         <div className="btnGroup">
           <button type="button" className="btn btn-outline-dark">Share</button>
           <button type="button" className="btn btn-outline-dark">Edit Profile</button>
+          <Link passHref href="/board/new">
+            <button type="button" className="btn btn-outline-dark">Create Board</button>
+          </Link>
         </div>
       </div>
     </>
