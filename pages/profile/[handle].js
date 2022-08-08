@@ -18,7 +18,7 @@ export default function ViewBook() {
   return (
     <>
       <ProfileHead image={userDetails.image} handle={userDetails.handle} displayName={userDetails.displayName} />
-      <ProfileBody />
+      <ProfileBody handle={userDetails.handle} />
     </>
   );
 }

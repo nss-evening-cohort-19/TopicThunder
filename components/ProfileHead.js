@@ -1,9 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
+import { MdOutlineFileUpload } from 'react-icons/md';
+import { FaEllipsisH } from 'react-icons/fa';
+import { useAuth } from '../utils/context/authContext';
 // import { getUserByUid } from '../api/usersData';
 
 function ProfilePage({ image, displayName, handle }) {
+  const { user } = useAuth();
+
   return (
     <>
       <div className="card border-light profile">
@@ -17,8 +23,31 @@ function ProfilePage({ image, displayName, handle }) {
           </ul>
         </div>
         <div className="btnGroup">
-          <button type="button" className="btn shareBtn btn-outline-dark">Share</button>
-          <button type="button" className="btn editBtn btn-outline-dark">Edit Profile</button>
+          {user.handle === handle
+            ? (
+              <>
+                <button type="button" className="btn shareBtn btn-outline-dark">Share</button>
+                <Link passHref href="/profile/new">
+                  <button type="button" className="btn editBtn btn-outline-dark">Edit Profile</button>
+                </Link>
+              </>
+            )
+            : ''}
+          {user.handle !== handle
+            ? (
+              <>
+                <button type="button" className="icons btn btn-light">
+                  <h2><MdOutlineFileUpload /></h2>
+                </button>
+                <button type="button" className="btn shareBtn btn-outline-dark">Message</button>
+                <button type="button" className="btn editBtn btn-danger">Follow</button>
+                <button type="button" className="icons btn btn-light">
+                  <h3><FaEllipsisH /></h3>
+                </button>
+
+              </>
+            )
+            : ''}
         </div>
       </div>
     </>
