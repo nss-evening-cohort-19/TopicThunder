@@ -61,7 +61,7 @@ export default function NavBar() {
             <button type="button" className="icons btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
               <h3><BsFillChatDotsFill /></h3>
             </button>
-            <button type="button" onClick={() => checkIfUserExistsThenRoute()} className="icons btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
+            <button type="button" onClick={() => checkIfUserExistsThenRoute()} className="icons btn btn-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
               <h3><BsPersonCircle /></h3>
             </button>
             {/* <button type="button" className="btn btn-outline-danger" onClick={signOut}>Log Out</button> */}

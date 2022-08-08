@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { getUserByHandle } from '../../api/usersData';
 import ProfileHead from '../../components/ProfileHead';
+import ProfileBody from '../../components/ProfileBody';
 
 export default function ViewBook() {
   const [userDetails, setUserDetails] = useState({});
@@ -15,6 +16,9 @@ export default function ViewBook() {
   }, [handle]);
 
   return (
-    <ProfileHead image={userDetails.image} handle={userDetails.handle} displayName={userDetails.displayName} />
+    <>
+      <ProfileHead image={userDetails.image} handle={userDetails.handle} displayName={userDetails.displayName} />
+      <ProfileBody />
+    </>
   );
 }

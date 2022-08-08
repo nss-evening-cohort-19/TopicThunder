@@ -54,6 +54,8 @@ body {
 }
 .icons {
   border-radius: 50%;
+  background: transparent;
+  border: hidden;
 }
 .search-me {
   width: 100%;
@@ -103,9 +105,70 @@ body {
 .gridCard > img {
   border-radius: 20px;
 }
+<<<<<<< HEAD
 .profile-pic{
   width: 20rem;
   margin: 10px;
   border-radius: 20px;
   border: none;
+=======
+.profile {
+  height: 45vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border-style: hidden;
+}
+.profile-pic {
+  height: 9rem;
+  width: 9rem;
+  border-radius: 50%;
+  margin: .5rem;
+  object-fit: cover;
+}
+.card-handle-text {
+  color: grey;
+}
+.followList {
+  margin: 0;
+  padding: 0;
+  width: 13rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.btnGroup {
+  margin: .5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.editBtn, .shareBtn{
+  margin: .5rem;
+  border-radius: 20%/50%;
+}
+.shareBtn {
+  width: 6rem;
+}
+.profile-body {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  border-style: hidden;
+}
+.createSavedBtns {
+  padding: 0;
+  width: 20vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+}
+.iconBtns {
+  margin: 0;
+  width: 90vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+>>>>>>> main
 }
