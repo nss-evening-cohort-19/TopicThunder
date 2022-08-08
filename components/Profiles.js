@@ -1,11 +1,11 @@
 import React from 'react';
-// import ProfileCard from './ProfileCard';
+import ProfilePage from './ProfileHead';
 
 export default function Profiles() {
   return (
     <>
       <div>profiles</div>
-      {/* <ProfileCard /> */}
+      <ProfilePage />
     </>
   );
 }
