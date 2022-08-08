@@ -17,10 +17,10 @@ function ProfilePage({ image, displayName, handle }) {
         <h3 className="card-title">{displayName}</h3>
         <p className="card-text card-handle-text">@{handle}</p>
         <div className="card-text follow-link">
-          <ul className="followList">
-            <li className="list-group-item"><b>Followers: 3</b></li>
-            <li className="list-group-item"><b>Follows: 167</b></li>
-          </ul>
+          {/* <ul className="list-group list-group-horizontal">
+            <li className="list-group-item">Followers: {followedBy.length}</li>
+            <li className="list-group-item">Follows: {usersFollowed.length}</li>
+          </ul> */}
         </div>
         <div className="btnGroup">
           {user.handle === handle
