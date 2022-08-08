@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllPins } from '../api/pinsData';
 import { useAuth } from '../utils/context/authContext';
 import PinCardForGrid from '../components/PinCardForGrid';
+import { getSingleBoardDetails } from '../api/boardsData';
 
 export default function HomePage() {
   const [pins, setPins] = useState([]);
@@ -25,9 +26,9 @@ export default function HomePage() {
         {pins.map((pin) => (
           <PinCardForGrid pinObj={pin} key={pin.firebaseKey} onUpdate={getAllPins} />
         ))}
-        {/* <button type="button" size="lg" className="btn signBtn btn-primary btn-large" onClick={() => getMultiplePinDetails('cartyp').then(console.warn)}>
+        <button type="button" size="lg" className="btn signBtn btn-primary btn-large" onClick={() => getSingleBoardDetails('-N4V3GjLr43nZGeB1dx1').then(console.warn)}>
           Test Button
-        </button> */}
+        </button>
       </div>
     </>
   );

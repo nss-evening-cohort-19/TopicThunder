@@ -1,6 +1,7 @@
 // import PropTypes from 'prop-types';
 import { FaPlus } from 'react-icons/fa';
 import { BiSliderAlt } from 'react-icons/bi';
+import Link from 'next/link';
 
 function ProfileBody() {
   return (
@@ -15,9 +16,11 @@ function ProfileBody() {
           </button>
         </div>
         <div className="iconBtns">
-          <button type="button" className="icons btn btn-light">
-            <h3><FaPlus /></h3>
-          </button>
+          <Link passHref href="/board/new">
+            <button type="button" className="icons btn btn-light">
+              <h3><FaPlus /></h3>
+            </button>
+          </Link>
           <button type="button" className="icons btn btn-light">
             <h3><BiSliderAlt /></h3>
           </button>

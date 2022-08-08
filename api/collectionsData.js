@@ -49,6 +49,7 @@ const removePinFromBoard = (pinFirebaseKey, boardFirebaseKey) => new Promise((re
 
 export {
   collectionsGetPinByFirebaseKey,
+  collectionsGetBoardByFirebaseKey,
   getPinsContainedByGivenBoard,
   getBoardsThatContainGivenPin,
   addPinToBoard,
