@@ -2,23 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
-import { getMultipleBoardDetails } from '../../api/boardsData';
 import { createPin, updatePin } from '../../api/pinsData';
 
 const initialState = {
   name: '',
   image: '',
   description: '',
+  link: '',
 };
 
-function PinForm({ obj }) {
-  const [boards, setBoards] = useState([]);
+function PinForm({ obj, board }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
-    getMultipleBoardDetails(user.handle).then(setBoards);
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
@@ -37,7 +35,7 @@ function PinForm({ obj }) {
         .then(() => router.push(`/pin/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, user: user.handle, time: new Date().getTime() };
-      createPin(payload).then(() => {
+      createPin(payload, board).then(() => {
         router.push('/');
       });
     }
@@ -69,29 +67,6 @@ function PinForm({ obj }) {
               <input type="url" id="dest-url" className="form-control" placeholder="Enter a destination url" name="link" value={formInput.link} onChange={handleChange} required />
             </label>
           </div>
-          <div className="form-floating mb-3">
-            <select
-              className="form-select mb-3"
-              id="floatingSelect"
-              aria-label="Board"
-              name="board_id"
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select a Board</option>
-              {
-            boards.map((board) => (
-              <option
-                key={board.firebaseKey}
-                value={board.firebaseKey}
-                // defaultValue={obj.board === board.firebaseKey}
-              >
-                {board.name}
-              </option>
-            ))
-          }
-            </select>
-          </div>
           <div className="btn-group-vertical">
             <button type="submit" className="btn btn-dark">{obj.firebaseKey ? 'Update' : 'Create'} Pin</button>
           </div>
@@ -112,10 +87,12 @@ PinForm.propTypes = {
     link: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
+  board: PropTypes.string,
 };
 
 PinForm.defaultProps = {
   obj: initialState,
+  board: '',
 };
 
 export default PinForm;
