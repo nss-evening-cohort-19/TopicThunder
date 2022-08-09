@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { clientCredentials } from '../utils/client';
-import { getBoardsThatContainGivenPin } from './collectionsData';
+import { addPinToBoard, getBoardsThatContainGivenPin } from './collectionsData';
 import { getUserByHandle } from './usersData';
 
 const dbUrl = clientCredentials.databaseURL;
@@ -41,12 +41,14 @@ const deletePinShallow = (pinFirebaseKey) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const createPin = (pinObj) => new Promise((resolve, reject) => {
+const createPin = (pinObj, boardToConnect) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/pins.json`, pinObj)
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/pins/${response.data.name}.json`, payload)
-        .then(resolve);
+        .then(() => {
+          addPinToBoard(response.data.name, boardToConnect).then(resolve);
+        });
     }).catch(reject);
 });
 
