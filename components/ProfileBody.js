@@ -1,9 +1,12 @@
 // import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa';
 import { BiSliderAlt } from 'react-icons/bi';
-import Link from 'next/link';
+import { useAuth } from '../utils/context/authContext';
 
-function ProfileBody() {
+function ProfileBody({ handle }) {
+  const user = useAuth();
   return (
     <>
       <div className="card border-light profile-body">
@@ -16,18 +19,28 @@ function ProfileBody() {
           </button>
         </div>
         <div className="iconBtns">
-          <Link passHref href="/board/new">
-            <button type="button" className="icons btn btn-light">
-              <h3><FaPlus /></h3>
-            </button>
-          </Link>
-          <button type="button" className="icons btn btn-light">
-            <h3><BiSliderAlt /></h3>
-          </button>
+          {user.handle !== handle
+            ? (
+              <>
+                <button type="button" className="icons btn btn-light">
+                  <h3><BiSliderAlt /></h3>
+                </button>
+                <Link passHref href="/pin/new" className="icons btn btn-light">
+                  <button type="button" className="icons btn btn-light">
+                    <h3><FaPlus /></h3>
+                  </button>
+                </Link>
+              </>
+            )
+            : ''}
         </div>
       </div>
     </>
   );
 }
+
+ProfileBody.propTypes = {
+  handle: PropTypes.string,
+}.isRequired;
 
 export default ProfileBody;
