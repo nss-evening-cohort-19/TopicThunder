@@ -1,7 +1,4 @@
-
-<div style="text-align:center"><h1>Topic Thunder</h1></div></div>
-
-<image src="./instructions/hhpw-record.png" style="height:300px;"></image></div>
+<p align="center"><image src="./public/logoType.png" style="height:300px;"></image></p>
 
 
 
