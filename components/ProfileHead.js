@@ -51,7 +51,6 @@ function ProfilePage({ image, displayName, handle }) {
                 <button type="button" className="icons btn btn-light">
                   <h3><FaEllipsisH /></h3>
                 </button>
-
               </>
             )
             : ''}

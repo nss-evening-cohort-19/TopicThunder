@@ -15,7 +15,6 @@ export default function IndBoardPage(onUpdate) {
 
   useEffect(() => {
     getBoardDetails(firebaseKey);
-    console.warn(boardDetails);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseKey]);
 
