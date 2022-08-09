@@ -2,17 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import Link from 'next/link';
-// import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
-// import { deleteBoard } from '../api/boardsData';
-
 function BoardCard({ name, image }) {
-  // const deleteThisBoard = () => {
-  //   if (window.confirm(`Delete ${boardObj.name}?`)) {
-  //     deleteBoard(boardObj.firebaseKey).then(() => onUpdate());
-  //   }
-  // };
   return (
     <div className="card mb-3" style={{ maxWidth: '540px' }}>
       <div className="row g-0">

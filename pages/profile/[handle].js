@@ -26,7 +26,7 @@ export default function ViewBook() {
       <ProfileBody />
       <div className="boardGridContainer">
         {boardDetails?.map((board) => (
-          <BoardCardForGrid name={board?.name} image={board?.image} description={board?.description} firebaseKey={board?.firebaseKey} />
+          <BoardCardForGrid key={board?.firebaseKey} name={board?.name} image={board?.image} description={board?.description} firebaseKey={board?.firebaseKey} />
         ))}
       </div>
     </>
