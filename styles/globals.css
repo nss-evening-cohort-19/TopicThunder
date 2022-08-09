@@ -62,16 +62,11 @@ body {
 }
 
 .gridContainer {
-  height: 130vh;
-  display: flex;
-  max-width: 80vw;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: flex-start;
+  column-count: 4;
+  column-gap: 15px;
 }
 
 .gridCard {
-  width: 20rem;
   margin: 10px;
   border-radius: 20px;
   border: none;
