@@ -11,8 +11,14 @@ import BoardCardForGrid from '../../components/BoardCardForGrid';
 export default function ViewBook() {
   const [userDetails, setUserDetails] = useState({});
   const [boardDetails, setBoardDetails] = useState();
+  const [render, setRender] = useState(false);
   const router = useRouter();
   const { handle } = router.query;
+
+  const forceRender = () => {
+    setRender(!render);
+    console.warn(render);
+  };
 
   useEffect(() => {
     getUserByHandle(handle).then(setUserDetails);
@@ -22,7 +28,7 @@ export default function ViewBook() {
 
   return (
     <>
-      <ProfileHead image={userDetails.image} handle={userDetails.handle} displayName={userDetails.displayName} />
+      <ProfileHead image={userDetails.image} handle={userDetails.handle} displayName={userDetails.displayName} forceRender={forceRender} />
       <ProfileBody handle={userDetails.handle} />
       <div className="boardGridContainer">
         {boardDetails?.map((board) => (
