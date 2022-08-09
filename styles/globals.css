@@ -52,6 +52,11 @@ body {
   display: flex;
   justify-content: center;
 }
+#floatingSelect {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 .icons {
   border-radius: 50%;
   background: transparent;

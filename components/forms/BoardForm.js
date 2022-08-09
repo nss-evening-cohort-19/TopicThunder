@@ -35,7 +35,7 @@ function BoardForm({ boardObj }) {
     } else {
       const payload = { ...formInputs, user: user.handle, time: new Date().getTime() };
       createBoard(payload).then(() => {
-        router.push('/profiles');
+        router.push(`/profile/${user.handle}`);
       });
     }
   };
