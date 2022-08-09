@@ -44,9 +44,9 @@ function ProfileForm({ obj }) {
     }
   };
   return (
-    <div className="card cardForm text-center text-dark bg-light mb-3">
+    <div onSubmit={handleSubmit} className="card cardForm text-center text-dark bg-light mb-3">
       <div className="card-header">
-        Create Profile
+        {obj.handle ? 'Update' : 'Create' } Profile
       </div>
       <div className="card-body">
         <form onSubmit={handleSubmit}>
@@ -99,8 +99,12 @@ function ProfileForm({ obj }) {
             </label>
           </div>
           <div className="btn-group-vertical">
-            <button type="button" className="btn btn-dark" onClick={handleSubmit}>{obj.handle ? 'Update' : 'Create'}</button>
-            <button type="button" className="btn btn-link">Continue as guest</button>
+            <button type="submit" className="btn btn-dark createBtn" onClick={handleSubmit}>{obj.handle ? 'Update' : 'Create'} Profile</button>
+            {user.handle === null
+              ? (
+                <button type="button" className="btn btn-link">Continue as guest</button>
+              )
+              : ''}
           </div>
         </form>
       </div>
