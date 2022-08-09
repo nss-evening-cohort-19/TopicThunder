@@ -1,14 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { MdOutlineFileUpload } from 'react-icons/md';
 import { FaEllipsisH } from 'react-icons/fa';
 import { useAuth } from '../utils/context/authContext';
-// import { getUserByUid } from '../api/usersData';
+import { getWhoUserFollows, getWhoFollowsUser } from '../api/followsData';
 
 function ProfilePage({ image, displayName, handle }) {
   const { user } = useAuth();
+  const [followDetails, setFollowDetails] = useState();
+  const [followerDetails, setFollowerDetails] = useState();
+
+  useEffect(() => {
+    getWhoUserFollows(handle).then(setFollowDetails);
+    getWhoFollowsUser(handle).then(setFollowerDetails);
+  }, [handle]);
 
   return (
     <>
@@ -17,10 +24,10 @@ function ProfilePage({ image, displayName, handle }) {
         <h3 className="card-title">{displayName}</h3>
         <p className="card-text card-handle-text">@{handle}</p>
         <div className="card-text follow-link">
-          {/* <ul className="list-group list-group-horizontal">
-            <li className="list-group-item">Followers: {followedBy.length}</li>
-            <li className="list-group-item">Follows: {usersFollowed.length}</li>
-          </ul> */}
+          <ul className="followList">
+            <li className="list-group-item"><b>Followers: {followerDetails?.length}</b></li>
+            <li className="list-group-item"><b>Follows: {followDetails?.length}</b></li>
+          </ul>
         </div>
         <div className="btnGroup">
           {user.handle === handle
