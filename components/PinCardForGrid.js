@@ -24,23 +24,6 @@ function PinCardForGrid({ pinObj }) {
             <p className="hoverDescription">{pinObj.description}</p>
           </div>
         </Link>
-        {/* <div className="card-body">
-          <h5 className="card-title">{pinObj.name}</h5>
-          <Link passHref href="/">
-            <p className="card-text">{pinObj.link}</p>
-          </Link>
-        </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">Created by {pinObj.user}</li>
-          <li className="list-group-item">Created on {renderAbsoluteTime(pinObj.time)}</li>
-          <li className="list-group-item">Created {renderRelativeTime(pinObj.time)}</li>
-        </ul>
-        <div className="card-body">
-          <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
-            <button type="button" className="card-edit">Edit</button>
-          </Link><br />
-          <button type="button" className="card-delete" onClick={deleteThisPin}>Delete</button>
-        </div> */}
       </div>
     </>
   );
