@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FaPlus } from 'react-icons/fa';
 import { getSingleBoardDetails } from '../../api/boardsData';
-// import { getAllPins } from '../../api/pinsData';
 import BoardCard from '../../components/BoardCard';
 import PinCardForGrid from '../../components/PinCardForGrid';
 
@@ -19,7 +18,7 @@ export default function IndBoardPage(onUpdate) {
 
   useEffect(() => {
     getBoardDetails(firebaseKey);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseKey]);
 
   return (

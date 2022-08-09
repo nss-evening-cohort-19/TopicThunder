@@ -137,6 +137,7 @@ body {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  border: none;
 }
 .btnGroup {
   margin: .5rem;
