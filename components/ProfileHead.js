@@ -36,10 +36,12 @@ function ProfilePage({ image, displayName, handle }) {
 
   useEffect(() => {
     gatherFollowDataOfProfile();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handle]);
 
   useEffect(() => {
     checkIfFollowedByYou();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [followerDetails]);
 
   return (
