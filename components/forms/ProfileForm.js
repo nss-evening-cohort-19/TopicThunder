@@ -39,7 +39,7 @@ function ProfileForm({ obj }) {
       packagedPayload[payloadKey] = payloadValue;
       createUser(packagedPayload).then(() => {
         checkAndSetHandle(user.uid);
-        router.push('/profiles');
+        router.push('/');
       });
     }
   };
