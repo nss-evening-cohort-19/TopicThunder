@@ -11,21 +11,36 @@ import {
 
 function ProfilePage({ image, displayName, handle }) {
   const { user } = useAuth();
-  const [followDetails, setFollowDetails] = useState();
-  const [followerDetails, setFollowerDetails] = useState();
-  const [followed, setFollowed] = useState(false);
-  // const follower = user.handle;
-  const checkIfFollowed = () => {
+  const [followDetails, setFollowDetails] = useState(null);
+  const [followerDetails, setFollowerDetails] = useState(null);
+  const [followed, setFollowed] = useState(null);
+  const gatherFollowDataOfProfile = () => {
+    getWhoUserFollows(handle).then((userArray) => {
+      setFollowDetails(userArray.slice());
+    });
+    getWhoFollowsUser(handle).then((userArray) => {
+      setFollowerDetails(userArray.slice());
+    });
+    console.warn('gathered profile follow connections: ', followerDetails);
+  };
+
+  const checkIfFollowedByYou = () => {
     const match = followerDetails?.filter((obj) => obj.handle === user.handle);
     if (match?.length > 0) {
       setFollowed(true);
+    } else {
+      setFollowed(false);
     }
-    console.warn(followerDetails);
+    console.warn('checked whether you were in it: ', followed);
   };
+
   useEffect(() => {
-    getWhoUserFollows(handle).then(setFollowDetails);
-    getWhoFollowsUser(handle).then(setFollowerDetails);
-  }, [followed]);
+    gatherFollowDataOfProfile();
+  }, [handle]);
+
+  useEffect(() => {
+    checkIfFollowedByYou();
+  }, [followerDetails]);
 
   return (
     <>
@@ -36,7 +51,7 @@ function ProfilePage({ image, displayName, handle }) {
         <div className="card-text follow-link">
           <ul className="followList">
             <li className="list-group-item"><b>Followers: {followerDetails?.length}</b></li>
-            <li className="list-group-item"><b>Follows: {followDetails?.length}</b></li>
+            <li className="list-group-item"><b>Following: {followDetails?.length}</b></li>
           </ul>
         </div>
         <div className="btnGroup">
@@ -60,11 +75,27 @@ function ProfilePage({ image, displayName, handle }) {
                 {followed
                   ? (
                     <>
-                      <button type="button" id={handle} className="btn editBtn btn-dark" onClick={() => removeFollow(user.handle, handle).then(checkIfFollowed())}>Unfollow</button>
+                      <button
+                        type="button"
+                        id={handle}
+                        className="btn editBtn btn-dark"
+                        onClick={() => {
+                          removeFollow(user.handle, handle).then(() => gatherFollowDataOfProfile());
+                        }}
+                      >Unfollow
+                      </button>
                     </>
                   )
                   : (
-                    <button type="button" onClick={() => addFollow(user.handle, handle).then(checkIfFollowed())} id={handle} className="btn editBtn btn-danger">Follow</button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        addFollow(user.handle, handle).then(() => gatherFollowDataOfProfile());
+                      }}
+                      id={handle}
+                      className="btn editBtn btn-danger"
+                    >Follow
+                    </button>
                   )}
                 <button type="button" className="icons btn btn-light">
                   <h3><FaEllipsisH /></h3>
