@@ -5,17 +5,27 @@ import Link from 'next/link';
 import { MdOutlineFileUpload } from 'react-icons/md';
 import { FaEllipsisH } from 'react-icons/fa';
 import { useAuth } from '../utils/context/authContext';
-import { getWhoUserFollows, getWhoFollowsUser } from '../api/followsData';
+import {
+  getWhoUserFollows, getWhoFollowsUser, addFollow, removeFollow,
+} from '../api/followsData';
 
 function ProfilePage({ image, displayName, handle }) {
   const { user } = useAuth();
   const [followDetails, setFollowDetails] = useState();
   const [followerDetails, setFollowerDetails] = useState();
-
+  const [followed, setFollowed] = useState(false);
+  // const follower = user.handle;
+  const checkIfFollowed = () => {
+    const match = followerDetails?.filter((obj) => obj.handle === user.handle);
+    if (match?.length > 0) {
+      setFollowed(true);
+    }
+    console.warn(followerDetails);
+  };
   useEffect(() => {
     getWhoUserFollows(handle).then(setFollowDetails);
     getWhoFollowsUser(handle).then(setFollowerDetails);
-  }, [handle]);
+  }, [followed]);
 
   return (
     <>
@@ -47,7 +57,15 @@ function ProfilePage({ image, displayName, handle }) {
                   <h2><MdOutlineFileUpload /></h2>
                 </button>
                 <button type="button" className="btn shareBtn btn-outline-dark">Message</button>
-                <button type="button" className="btn editBtn btn-danger">Follow</button>
+                {followed
+                  ? (
+                    <>
+                      <button type="button" id={handle} className="btn editBtn btn-dark" onClick={() => removeFollow(user.handle, handle).then(checkIfFollowed())}>Unfollow</button>
+                    </>
+                  )
+                  : (
+                    <button type="button" onClick={() => addFollow(user.handle, handle).then(checkIfFollowed())} id={handle} className="btn editBtn btn-danger">Follow</button>
+                  )}
                 <button type="button" className="icons btn btn-light">
                   <h3><FaEllipsisH /></h3>
                 </button>
@@ -59,7 +77,6 @@ function ProfilePage({ image, displayName, handle }) {
     </>
   );
 }
-
 ProfilePage.propTypes = {
   displayName: PropTypes.string,
   handle: PropTypes.string,
