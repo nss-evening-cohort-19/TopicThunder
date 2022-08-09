@@ -21,7 +21,6 @@ function ProfilePage({ image, displayName, handle }) {
     getWhoFollowsUser(handle).then((userArray) => {
       setFollowerDetails(userArray.slice());
     });
-    console.warn('gathered profile follow connections: ', followerDetails);
   };
 
   const checkIfFollowedByYou = () => {
@@ -31,7 +30,6 @@ function ProfilePage({ image, displayName, handle }) {
     } else {
       setFollowed(false);
     }
-    console.warn('checked whether you were in it: ', followed);
   };
 
   useEffect(() => {
