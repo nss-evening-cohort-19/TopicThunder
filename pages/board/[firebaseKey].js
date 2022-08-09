@@ -11,9 +11,10 @@ export default function IndBoardPage(onUpdate) {
   const router = useRouter();
   const [boardDetails, setBoardDetails] = useState();
   const { firebaseKey } = router.query;
-
   function getBoardDetails(key) {
-    getSingleBoardDetails(key).then(setBoardDetails);
+    getSingleBoardDetails(key).then((response) => {
+      setBoardDetails(response);
+    });
   }
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function IndBoardPage(onUpdate) {
         />
       </div>
       <div className="iconBtns">
-        <Link passHref href="/pin/new">
+        <Link passHref href={`/pin/createAndAddToBoard/${boardDetails?.firebaseKey}`}>
           <button type="button" className="icons btn btn-light">
             <h3><FaPlus /></h3>
           </button>
