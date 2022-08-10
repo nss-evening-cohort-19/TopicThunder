@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-// import { useAuth } from '../../utils/context/authContext';
 import { getUserByHandle } from '../../api/usersData';
 import { getMultipleBoardDetails } from '../../api/boardsData';
 import ProfileHead from '../../components/ProfileHead';

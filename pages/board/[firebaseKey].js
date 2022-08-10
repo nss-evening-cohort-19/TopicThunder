@@ -15,6 +15,7 @@ export default function IndBoardPage(onUpdate) {
   const router = useRouter();
   const [boardDetails, setBoardDetails] = useState();
   const { firebaseKey } = router.query;
+
   function getBoardDetails(key) {
     getSingleBoardDetails(key).then((response) => {
       setBoardDetails(response);
@@ -25,6 +26,8 @@ export default function IndBoardPage(onUpdate) {
     getBoardDetails(firebaseKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseKey]);
+  console.warn(getBoardDetails);
+  console.error(boardDetails);
 
   return (
     <>

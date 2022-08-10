@@ -16,15 +16,14 @@ function PinCardForGrid({ pinObj }) {
 
   return (
     <>
-      <Link passHref href={`../board/${pinObj.firebaseKey}`}>
-        <div className="card profileCard">
-          <img src={pinObj.image} className="card-img-top" alt=".." />
-          <p className="hoverTitle"><b>{pinObj.name}</b></p>
+      <div className="card gridCard">
+        <img src={pinObj.image} className="card-img-top" alt="pin-pic" />
+        <Link passHref href={`pin/${pinObj.firebaseKey}`}>
           <div className="hoverContainer">
             <p className="hoverDescription">{pinObj.description}</p>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </div>
     </>
   );
 }
