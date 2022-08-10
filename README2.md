@@ -20,7 +20,15 @@ This project is for users who wish to add pins to their board for saving content
 
 * **Getting Started** 
 
-You can start testing the product by logging in with your respective Google account or using the guest login button if you only wish to view the project without exploring all functions. If authenticated, use the home page buttons to begin creating a board to add or update pins until signed out. You may view and edit your personal user board at any time while logged in. 
+You can start testing the product by logging in with your respective Google account or using the guest login button if you only wish to view the project without exploring all functions. If authenticated, use the home page buttons to view all the pins created in a random fashion. If you only need a smaller set of pins to view, you may click the Today link on the NavBar to view only today's sorted pins. The best way to begin is to:
+
+* Create a profile on the profile page 
+
+* Click the plus icon to create a board to store your pins under 
+
+* Create pins under the board to have a collection of pins based on your thought process or inspiration. 
+
+* Use the side bar that pulls out in the profile page to access the sign out button to exit the app. 
 
 
 
@@ -34,10 +42,11 @@ Users can get help with this project, if needed, by sending a discussion message
 
 
 
-## Team Topic Thundaaaaaimage
+## Team Topic Thundaaaaa
 
 ***
-image.png
+
+
 * **Contributors**
 
 Michael Pennington, Micah "Tots" Stotsky, Patrick Burns, Jeremiah King
@@ -70,7 +79,11 @@ Michael Pennington, Micah "Tots" Stotsky, Patrick Burns, Jeremiah King
 
 * **Topic Thunder Team 2 Wireframe**
 
-[Topic Thunder Team 2 Wireframe Link](https://dbdiagram.io/d/62e92d28f31da965e86355c4)** <--Click to view the wireframe.
+[Topic Thunder Team 2 Wireframe Link](https://dbdiagram.io/d/62e92d28f31da965e86355c4)  <--Click to view the wireframe.
+
+* Data Outline Doc for FLow
+
+  [Data Outline Link](https://docs.google.com/document/d/1N5pNIEKz2PE9UZ19xet_CZcsqNv5-QMZ2HK2sg0Swb0/edit)
 
 
 
@@ -82,7 +95,6 @@ Michael Pennington, Micah "Tots" Stotsky, Patrick Burns, Jeremiah King
 
 [Topic Thunder Team 2 Flow Chart Link](https://www.figma.com/file/IbTWQlDC5JZszfziknk4Wl/MVP-POS-Team-1)
 
-We used the same FigJam board with arrow annotations to describe the flow between pages.
 
 * **Topic Thunder Team 2 Lucid Flowchart**
 
@@ -120,4 +132,4 @@ We also had another flow chart drawn up for visual planning in Lucid
 
 * **Netlify Deployment Link**
 
-[Netlify Topic Thunder Link](https://fluffy-kitten-9d4cc8.netlify.app/)
+[Netlify Topic Thunder Link](https://topic-thunder1.netlify.app/)
