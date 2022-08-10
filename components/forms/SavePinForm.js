@@ -20,6 +20,7 @@ function SavePinForm({ pinFirebaseKey }) {
   }, [user.handle]);
 
   const handleChange = (e) => {
+    console.warn(e.target);
     const { name, value } = e.target;
     setFormInput((prevState) => ({
       ...prevState,
@@ -29,6 +30,7 @@ function SavePinForm({ pinFirebaseKey }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.warn(pinFirebaseKey, ' ', formInput.board);
     addPinToBoard(pinFirebaseKey, formInput.board).then(() => {
       router.push(`/board/${formInput.board}`);
     });
@@ -42,20 +44,18 @@ function SavePinForm({ pinFirebaseKey }) {
         <form onSubmit={handleSubmit}>
           <div className="form-floating mb-3">
             <select
-              className="form-select mb-3"
-              id="floatingSelect"
+              className="boardSelector"
               aria-label="Board"
-              name="boardFirebaseKey"
+              name="board"
               onChange={handleChange}
               required
             >
-              <option value="">Select a Board</option>
+              <option value="">Save to which board?</option>
               {
-            boards.map((board) => (
+            boards?.map((board) => (
               <option
                 key={board.firebaseKey}
                 value={board.firebaseKey}
-                // defaultValue={obj.board === board.firebaseKey}
               >
                 {board.name}
               </option>
@@ -63,26 +63,6 @@ function SavePinForm({ pinFirebaseKey }) {
           }
             </select>
           </div>
-          {/* <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Pin Title
-              <input type="text" id="pin-name" className="form-control" placeholder="Title of Pin" name="name" value={formInput.name} onChange={handleChange} required />
-            </label>
-          </div>
-          <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Pin Image or Video
-              <input type="url" id="image-url" className="form-control" placeholder="Enter an image url" name="image" value={formInput.image} onChange={handleChange} required />
-            </label>
-          </div>
-          <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Pin Description
-              <input type="text" id="pin-desc" className="form-control" placeholder="Describe this pin" name="description" value={formInput.description} onChange={handleChange} required />
-            </label>
-          </div>
-          <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Destination link
-              <input type="url" id="dest-url" className="form-control" placeholder="Enter a destination url" name="link" value={formInput.link} onChange={handleChange} required />
-            </label>
-          </div> */}
           <div className="btn-group-vertical">
             <button type="submit" className="btn btn-dark">Save Pin</button>
           </div>

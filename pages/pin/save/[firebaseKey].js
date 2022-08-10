@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import SavePinForm from '../../../components/forms/PinForm';
+import SavePinForm from '../../../components/forms/SavePinForm';
 
 export default function SavePin() {
   const router = useRouter();
