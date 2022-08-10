@@ -173,3 +173,33 @@ body {
   flex-flow: row nowrap;
   justify-content: space-between;
 }
+.card-body {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+}
+.card-title {
+  display: flex;
+  align-items: center;
+}
+.pinContainer {
+  display: flex;
+  align-content: center;
+  box-shadow: rgba(99, 98, 98, 0.35) 0px 5px 15px;
+  border-radius: 2%;
+  width: 690px;
+  margin: auto;
+}
+.columnOne {
+  display: inline;
+  margin-right: 20px;
+}
+.columnTwo {
+  display: inline;
+  margin-left: 20px;
+}
+.pin-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
