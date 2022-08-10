@@ -9,7 +9,7 @@ import ProfileBody from '../../components/ProfileBody';
 // import BoardCardForGrid from '../../components/BoardCardForGrid';
 import ProfileBoard from '../../components/ProfileBoard';
 
-export default function ViewBook() {
+export default function ViewProfile() {
   const [userDetails, setUserDetails] = useState({});
   const [boardDetails, setBoardDetails] = useState();
   const router = useRouter();

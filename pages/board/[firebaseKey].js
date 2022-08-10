@@ -28,7 +28,7 @@ export default function IndBoardPage(onUpdate) {
 
   return (
     <>
-      <BoardHead image={boardDetails?.image} name={boardDetails?.name} pinCount={boardDetails?.pins.length} onUpdate={onUpdate} />
+      <BoardHead handle={user?.handle} image={boardDetails?.image} name={boardDetails?.name} pinCount={boardDetails?.pins.length} onUpdate={onUpdate} />
       {/* <div className="boardContainer">
         <BoardCard
           name={boardDetails?.name}
