@@ -30,7 +30,6 @@ function SavePinForm({ pinFirebaseKey }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.warn(pinFirebaseKey, ' ', formInput.board);
     addPinToBoard(pinFirebaseKey, formInput.board).then(() => {
       router.push(`/board/${formInput.board}`);
     });
