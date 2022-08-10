@@ -204,3 +204,18 @@ body {
   margin-top: 10rem;
   justify-content: space-between;
 }
+.profileGrid {
+  width: 90vw;
+  display: flex;
+  flex-flow: row wrap;
+}
+.profileCard {
+  width: 13rem;
+  height: 13rem;
+  border: hidden;
+  margin: 1rem;
+}
+.profileCard img{
+  height: 80%;
+  object-fit: cover;
+}

@@ -59,7 +59,7 @@ function ProfilePage({ image, displayName, handle }) {
             ? (
               <>
                 <button type="button" className="btn shareBtn btn-outline-dark">Share</button>
-                <Link passHref href="/profile/edit/MrPenn">
+                <Link passHref href={`/profile/edit/${handle}`}>
                   <button type="button" className="btn editBtn btn-outline-dark">Edit Profile</button>
                 </Link>
               </>

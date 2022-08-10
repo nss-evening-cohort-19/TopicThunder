@@ -6,7 +6,9 @@ import { FaEllipsisH, FaPlus } from 'react-icons/fa';
 import { BiSliderAlt } from 'react-icons/bi';
 // import { useAuth } from '../utils/context/authContext';
 
-function BoardHead({ image, name, pinCount }) {
+function BoardHead({
+  image, name, pinCount, handle,
+}) {
   return (
     <>
       <div className="card border-light profile board-head">
@@ -17,10 +19,10 @@ function BoardHead({ image, name, pinCount }) {
           </button>
         </div>
         <div className="card-mid">
-          <Link passHref href="/profile/MrPenn" className="btn btn-light">
+          <Link passHref href={`/profile/${handle}`} className="btn btn-light">
             <img src={image} alt="board pic" className="board-pic" />
           </Link>
-          <Link passHref href="/pin/new" className="btn btn-light">
+          <Link passHref href="/board/new" className="btn btn-light">
             <button type="button" className="icons btn btn-light">
               <h3><FaPlus /></h3>
             </button>
