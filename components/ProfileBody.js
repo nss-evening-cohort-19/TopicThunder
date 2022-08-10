@@ -25,7 +25,7 @@ function ProfileBody({ handle }) {
                 <button type="button" className="icons btn btn-light">
                   <h3><BiSliderAlt /></h3>
                 </button>
-                <Link passHref href="/pin/new" className="icons btn btn-light">
+                <Link passHref href="/board/new" className="icons btn btn-light">
                   <button type="button" className="icons btn btn-light">
                     <h3><FaPlus /></h3>
                   </button>
