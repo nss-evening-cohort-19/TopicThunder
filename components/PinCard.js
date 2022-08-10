@@ -46,8 +46,17 @@ function PinCard({ pinObj }) {
               className="pin-date"
             >Created on {renderAbsoluteTime(pinObj.time)} {renderRelativeTime(pinObj.time)}
             </p>
-
             <div className="card-body">
+              <Link href={`/pin/save/${pinObj.firebaseKey}`} passHref>
+                <button
+                  type="button"
+                  className="btn btn-dar"
+                  style={{
+                    width: '70px', margin: '10px', background: 'hotpink', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                  }}
+                >Save
+                </button>
+              </Link><br />
               <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
                 <button
                   type="button"
