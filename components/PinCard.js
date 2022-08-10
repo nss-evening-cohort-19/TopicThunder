@@ -15,28 +15,63 @@ function PinCard({ pinObj }) {
   };
 
   return (
-    <>
-      <div className="card" style={{ width: '25rem', margin: '10px', borderRadius: '2%' }}>
-        <img src={pinObj.image} className="card-img-top" alt={pinObj.link} />
-        <div className="card-body">
-          <h5 className="card-title">{pinObj.name}</h5>
-          <Link passHref href="/">
-            <p className="card-text">{pinObj.link}</p>
-          </Link>
+    <div className="pinContainer">
+      <div
+        // className="card"
+        style={{
+          width: '690px', margin: '10px', borderRadius: '2%', display: 'flex', alignContent: 'center',
+        }}
+      >
+        <div className="columnOne">
+          <img src={pinObj.image} className="card-img-top" alt={pinObj.link} />
         </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">Created by {pinObj.user.handle}</li>
-          <li className="list-group-item">Created on {renderAbsoluteTime(pinObj.time)}</li>
-          <li className="list-group-item">Created {renderRelativeTime(pinObj.time)}</li>
-        </ul>
-        <div className="card-body">
-          <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
-            <button type="button" className="card-edit">Edit</button>
-          </Link><br />
-          <button type="button" className="card-delete" onClick={deleteThisPin}>Delete</button>
+        <div className="columnTwo">
+          <div
+            className="card-body"
+            style={{
+              height: '70px', margin: '50px',
+            }}
+          >
+            <h1 className="card-title">{pinObj.name}</h1>
+          </div>
+          <div className="pin-content">
+            <h3 className="pin-creator">Created by {pinObj.user.handle}</h3>
+            <div className="pin-description"> {pinObj.description} </div>
+          </div>
+          <div>
+            <Link passHref href="/">
+              <p className="card-text">{pinObj.link}</p>
+            </Link>
+            <p
+              className="pin-date"
+            >Created on {renderAbsoluteTime(pinObj.time)} {renderRelativeTime(pinObj.time)}
+            </p>
+
+            <div className="card-body">
+              <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
+                <button
+                  type="button"
+                  className="btn btn-dar"
+                  style={{
+                    width: '70px', margin: '10px', background: 'hotpink', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                  }}
+                >Edit
+                </button>
+              </Link><br />
+              <button
+                style={{
+                  display: 'flex', alignSelf: 'flex-end', width: '70px', margin: '10px', background: 'lightgrey', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                }}
+                type="button"
+                className="btn btn-"
+                onClick={deleteThisPin}
+              >Delete
+              </button>
+            </div>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -45,6 +80,7 @@ PinCard.propTypes = {
     name: PropTypes.string,
     image: PropTypes.string,
     link: PropTypes.string,
+    description: PropTypes.string,
     boards: PropTypes.arrayOf(PropTypes.shape({
       description: PropTypes.string,
       firebaseKey: PropTypes.string,
