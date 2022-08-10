@@ -19,11 +19,9 @@ export default function IndPinPage(onUpdate) {
   }, [firebaseKey]);
 
   return (
-    <div className="pinContainer">
-      <PinCard
-        pinObj={pinDetails}
-        onUpdate={onUpdate}
-      />
-    </div>
+    <PinCard
+      pinObj={pinDetails}
+      onUpdate={onUpdate}
+    />
   );
 }

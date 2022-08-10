@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllPins } from '../api/pinsData';
 import { useAuth } from '../utils/context/authContext';
 import PinCardForGrid from '../components/PinCardForGrid';
-// import { getMultipleBoardDetails, getSingleBoardDetails } from '../api/boardsData';
-// import { getSingleBoardDetails } from '../api/boardsData';
+
 export default function HomePage() {
   const [pins, setPins] = useState([]);
 
