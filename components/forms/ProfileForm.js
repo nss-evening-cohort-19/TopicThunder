@@ -83,20 +83,26 @@ function ProfileForm({ obj }) {
             </label>
           </div>
           <div className="input-group mb-3">
-            <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Username
-              <input
-                type="text"
-                id="handle"
-                name="handle"
-                className="form-control"
-                placeholder="Enter a username"
-                aria-label="Username"
-                aria-describedby="basic-addon1"
-                value={formInput.handle}
-                onChange={handleChange}
-                required
-              />
-            </label>
+            {obj.handle === null
+              ? (
+                <label htmlFor="exampleFormControlInput1" className="form-label mb-3">Username
+                  <input
+                    type="text"
+                    id="handle"
+                    name="handle"
+                    className="form-control"
+                    placeholder="Enter a username"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                    value={formInput.handle}
+                    onChange={handleChange}
+                    disabled
+                    required
+                  />
+                </label>
+              )
+              : ''}
+
           </div>
           <div className="btn-group-vertical">
             <button type="submit" className="btn btn-dark createBtn" onClick={handleSubmit}>{obj.handle ? 'Update' : 'Create'} Profile</button>

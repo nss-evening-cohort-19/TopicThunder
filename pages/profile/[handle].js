@@ -5,9 +5,10 @@ import { getUserByHandle } from '../../api/usersData';
 import { getMultipleBoardDetails } from '../../api/boardsData';
 import ProfileHead from '../../components/ProfileHead';
 import ProfileBody from '../../components/ProfileBody';
-import BoardCardForGrid from '../../components/BoardCardForGrid';
+// import BoardCardForGrid from '../../components/BoardCardForGrid';
+import ProfileBoard from '../../components/ProfileBoard';
 
-export default function ViewBook() {
+export default function ViewProfile() {
   const [userDetails, setUserDetails] = useState({});
   const [boardDetails, setBoardDetails] = useState();
   const router = useRouter();
@@ -23,9 +24,9 @@ export default function ViewBook() {
     <>
       <ProfileHead image={userDetails.image} handle={userDetails.handle} displayName={userDetails.displayName} />
       <ProfileBody handle={userDetails.handle} />
-      <div className="boardGridContainer">
+      <div className="profileGrid">
         {boardDetails?.map((board) => (
-          <BoardCardForGrid key={board?.firebaseKey} name={board?.name} image={board?.image} description={board?.description} firebaseKey={board?.firebaseKey} />
+          <ProfileBoard key={board?.firebaseKey} name={board?.name} image={board?.image} description={board?.description} firebaseKey={board?.firebaseKey} pinCount={board?.pins.length} />
         ))}
       </div>
     </>

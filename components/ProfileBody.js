@@ -7,6 +7,7 @@ import { useAuth } from '../utils/context/authContext';
 
 function ProfileBody({ handle }) {
   const user = useAuth();
+  const myHandle = user.user.handle;
   return (
     <>
       <div className="card border-light profile-body">
@@ -19,7 +20,7 @@ function ProfileBody({ handle }) {
           </button>
         </div>
         <div className="iconBtns">
-          {user.handle !== handle
+          {handle === myHandle
             ? (
               <>
                 <button type="button" className="icons btn btn-light">

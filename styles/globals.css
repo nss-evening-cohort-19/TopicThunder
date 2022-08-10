@@ -173,6 +173,52 @@ body {
   flex-flow: row nowrap;
   justify-content: space-between;
 }
+.board-head {
+  height: 45vh;
+}
+.board-pic{
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  margin: .5rem;
+  object-fit: cover;
+}
+.card-top {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.card-mid {
+  width: 10rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.card-mid .icons {
+  margin: 0;
+  height: 3.5rem;
+  border-radius: 10%;
+}
+.card-bottom {
+  width: 90vw;
+  display: flex;
+  margin-top: 10rem;
+  justify-content: space-between;
+}
+.profileGrid {
+  width: 90vw;
+  display: flex;
+  flex-flow: row wrap;
+}
+.profileCard {
+  width: 13rem;
+  height: 13rem;
+  border: hidden;
+  margin: 1rem;
+}
+.profileCard img{
+  height: 80%;
+  object-fit: cover;
+}
 .card-body {
   display: flex;
   align-content: center;
