@@ -17,7 +17,7 @@ function PinCardForGrid({ pinObj }) {
   return (
     <>
       <div className="card gridCard">
-        <img src={pinObj.image} className="card-img-top" alt={pinObj.link} />
+        <img src={pinObj.image} className="card-img-top" alt="pin-pic" />
         <Link passHref href={`pin/${pinObj.firebaseKey}`}>
           <div className="hoverContainer">
             <p className="hoverTitle">{pinObj.name}</p>
