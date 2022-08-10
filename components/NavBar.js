@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { BsFillChatDotsFill, BsBellFill, BsPersonCircle } from 'react-icons/bs';
-import { BiChevronDown } from 'react-icons/bi';
 import { useAuth } from '../utils/context/authContext';
 import { getUserByUid } from '../api/usersData';
 // import { signOut } from '../utils/auth';
@@ -64,9 +63,6 @@ export default function NavBar() {
             </button>
             <button type="button" onClick={() => checkIfUserExistsThenRoute()} className="icons btn btn-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
               <h3><BsPersonCircle /></h3>
-            </button>
-            <button type="button" className="icons btn btn-light" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover">
-              <h3><BiChevronDown /></h3>
             </button>
             {/* <button type="button" className="btn btn-outline-danger" onClick={signOut}>Log Out</button> */}
           </div>
