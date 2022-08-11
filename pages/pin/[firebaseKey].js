@@ -1,13 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { getSinglePinDetails } from '../../api/pinsData';
+import { getAllPins, getSinglePinDetails } from '../../api/pinsData';
 import PinCard from '../../components/PinCard';
+// import { useAuth } from '../../utils/context/authContext';
+import PinCardForGrid from '../../components/PinCardForGrid';
 
 export default function IndPinPage(onUpdate) {
   const router = useRouter();
   const [pinDetails, setPinDetails] = useState();
+  const [pins, setPins] = useState([]);
   const { firebaseKey } = router.query;
+  // const { user } = useAuth();
+
+  const getAllOfThePinsDetails = () => {
+    getAllPins().then((pinsArray) => {
+      setPins(pinsArray.filter((pin) => pin.user === pinDetails?.user.handle));
+      // console.warn(date);
+    });
+  };
+
+  useEffect(() => {
+    getAllOfThePinsDetails();
+  }, [pinDetails]);
 
   function getPinDetails(key) {
     getSinglePinDetails(key).then(setPinDetails);
@@ -19,9 +34,17 @@ export default function IndPinPage(onUpdate) {
   }, [firebaseKey]);
 
   return (
-    <PinCard
-      pinObj={pinDetails}
-      onUpdate={onUpdate}
-    />
+    <>
+      <PinCard
+        pinObj={pinDetails}
+        onUpdate={onUpdate}
+      />
+      <p className="pinUserDetail"> More Pins from this user</p>
+      <div className="gridContainer">
+        {pins?.map((pin) => (
+          <PinCardForGrid pinObj={pin} key={pin.firebaseKey} onUpdate={getAllPins} />
+        ))}
+      </div>
+    </>
   );
 }

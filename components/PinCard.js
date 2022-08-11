@@ -35,7 +35,10 @@ function PinCard({ pinObj }) {
             <h1 className="card-title">{pinObj.name}</h1>
           </div>
           <div className="pin-content">
-            <h3 className="pin-creator">Created by {pinObj.user.handle}</h3>
+            <Link passHref href={`/profile/${pinObj.user.handle}`}>
+              <h3 className="pin-creator">Created by <b><u><em>{pinObj.user.handle}</em></u></b></h3>
+            </Link>
+
             <div className="pin-description"> {pinObj.description} </div>
           </div>
           <div>
