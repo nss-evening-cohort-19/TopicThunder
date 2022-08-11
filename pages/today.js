@@ -16,7 +16,6 @@ export default function Today() {
       sortedArray.sort((a, b) => b.time - a.time);
       filteredArray = sortedArray.filter((obj) => now - obj.time < 86400000);
       setPins(filteredArray);
-      // console.warn(date);
     });
   };
   const current = new Date();

@@ -46,26 +46,35 @@ export default function NavBar() {
                   <a className="nav-link" href="#">Today</a>
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link passHref href="/pin/new">
-                  <a className="nav-link" href="#">Create</a>
-                </Link>
-              </li>
-
+              {user.handle !== null
+                ? (
+                  <li className="nav-item">
+                    <Link passHref href="/pin/new">
+                      <a className="nav-link" href="#">Create</a>
+                    </Link>
+                  </li>
+                )
+                : ''}
             </ul>
             <form className="d-flex search-me" role="search">
               <input className="form-control me-2" type="search" placeholder="&#128269; Search" aria-label="Search" />
               {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
             </form>
-            <button type="button" className="icons btn btn-light">
-              <span className="position-absolute bottom-4 start-85 translate-middle p-2 bg-danger border border-light rounded-circle notificationDot">
-                <span className="visually-hidden">New alerts</span>
-              </span>
-              <h3><BsBellFill /></h3>
-            </button>
-            <button type="button" className="icons btn btn-light">
-              <h3><BsFillChatDotsFill /></h3>
-            </button>
+            {user.handle !== null
+              ? (
+                <>
+                  <button type="button" className="icons btn btn-light">
+                    <span className="position-absolute bottom-4 start-85 translate-middle p-2 bg-danger border border-light rounded-circle notificationDot">
+                      <span className="visually-hidden">New alerts</span>
+                    </span>
+                    <h3><BsBellFill /></h3>
+                  </button>
+                  <button type="button" className="icons btn btn-light">
+                    <h3><BsFillChatDotsFill /></h3>
+                  </button>
+                </>
+              )
+              : ''}
             <div className="btn-group" role="group" aria-label="Basic example">
               <button type="button" onClick={() => checkIfUserExistsThenRoute()} className="icons btn btn-light">
                 <h3><BsPersonCircle /></h3>
