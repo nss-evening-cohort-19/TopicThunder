@@ -230,11 +230,11 @@ body {
 }
 .pinContainer {
   display: flex;
-  align-content: center;
+  align-content: space-around;
   box-shadow: rgba(99, 98, 98, 0.35) 0px 5px 15px;
   border-radius: 2%;
   width: 690px;
-  margin: auto;
+  margin: 20px;
 }
 .columnOne {
   display: inline;
@@ -248,4 +248,14 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.pin-map {
+  column-count: 4;
+  column-gap: 15px;
+}
+.pinUserDetail {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

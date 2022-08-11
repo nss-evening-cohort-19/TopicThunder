@@ -66,4 +66,5 @@ export {
   deletePin,
   deleteBoard,
   deleteUser,
+  mergedGetPinsByUser,
 };
