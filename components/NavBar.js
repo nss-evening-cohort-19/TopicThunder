@@ -80,7 +80,6 @@ export default function NavBar() {
                 <h3><BsPersonCircle /></h3>
               </button>
             </div>
-
           </div>
         </div>
       </nav>

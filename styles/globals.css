@@ -305,3 +305,7 @@ body {
 .navbar-brand:hover {
   background: none;
 }
+.notificationDot {
+  margin-top: .5rem;
+  margin-left: .75rem;
+}
