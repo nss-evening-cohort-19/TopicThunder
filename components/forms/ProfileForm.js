@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+// import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../utils/context/authContext';
 import { createUser, updateUser } from '../../api/usersData';
+import { deleteUser } from '../../api/mergedData';
+import { signOut } from '../../utils/auth';
 
 const initialState = {
   displayName: '',
@@ -38,8 +41,16 @@ function ProfileForm({ obj }) {
       const payloadKey = formInput.handle;
       packagedPayload[payloadKey] = payloadValue;
       createUser(packagedPayload).then(() => {
-        checkAndSetHandle(user.uid);
+        checkAndSetHandle(user);
         router.push('/');
+      });
+    }
+  };
+  const deleteMyAccount = () => {
+    if (window.confirm(`Delete ${obj.handle}'s Entire Account?`)) {
+      deleteUser(obj.handle).then(() => {
+        router.push('/');
+        checkAndSetHandle(user);
       });
     }
   };
@@ -106,6 +117,16 @@ function ProfileForm({ obj }) {
           </div>
           <div className="btn-group-vertical">
             <button type="submit" className="btn btn-dark createBtn" onClick={handleSubmit}>{obj.handle ? 'Update' : 'Create'} Profile</button>
+            <button
+              type="button"
+              className="btn redText btn-link"
+              onClick={() => {
+                router.push('/');
+                deleteMyAccount();
+                signOut();
+              }}
+            ><sub>Delete My Account</sub>
+            </button>
             {user.handle === null
               ? (
                 <button type="button" className="btn btn-link">Continue as guest</button>

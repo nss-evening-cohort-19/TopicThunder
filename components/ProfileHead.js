@@ -4,12 +4,16 @@ import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { MdOutlineFileUpload } from 'react-icons/md';
 import { FaEllipsisH } from 'react-icons/fa';
+import { GoSignOut } from 'react-icons/go';
+import { useRouter } from 'next/router';
 import { useAuth } from '../utils/context/authContext';
 import {
   getWhoUserFollows, getWhoFollowsUser, addFollow, removeFollow,
 } from '../api/followsData';
+import { signOut } from '../utils/auth';
 
 function ProfilePage({ image, displayName, handle }) {
+  const router = useRouter();
   const { user } = useAuth();
   const [followDetails, setFollowDetails] = useState(null);
   const [followerDetails, setFollowerDetails] = useState(null);
@@ -45,6 +49,16 @@ function ProfilePage({ image, displayName, handle }) {
   return (
     <>
       <div className="card border-light profile">
+        <button
+          type="button"
+          className="btn signOutBtn btn-outline-danger"
+          alt="sign out"
+          onClick={() => {
+            router.push('/');
+            signOut();
+          }}
+        ><GoSignOut />
+        </button>
         <img src={image} alt="profile pic" className="profile-pic" />
         <h3 className="card-title">{displayName}</h3>
         <p className="card-text card-handle-text">@{handle}</p>

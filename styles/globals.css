@@ -11,6 +11,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  border-radius: 20%/50%;
+}
+a:hover{
+  background: hotpink;
 }
 
 * {
@@ -61,6 +65,9 @@ body {
   border-radius: 50%;
   background: transparent;
   border: hidden;
+}
+.icons:hover{
+  background: hotpink;
 }
 .search-me {
   width: 100%;
@@ -114,7 +121,7 @@ body {
   border: none;
 }
 .profile {
-  height: 45vh;
+  height: 50vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -248,4 +255,26 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.icon-buttons {
+  border-radius: 50%;
+}
+.signOutBtn {
+  align-self: flex-end;
+}
+.redText {
+  color: red;
+  text-decoration: none;
+}
+.redText:hover {
+  color: darkred;
+}
+.notificationDot {
+
 }
