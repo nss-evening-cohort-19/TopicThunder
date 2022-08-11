@@ -279,6 +279,11 @@ body {
 }
 .signOutBtn {
   align-self: flex-end;
+  border: hidden;
+  color: hotpink;
+}
+.signOutBtn:hover {
+  background: hotpink;
 }
 .redText {
   color: red;

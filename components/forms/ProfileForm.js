@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 // import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
+import { GoSignOut } from 'react-icons/go';
 import { useAuth } from '../../utils/context/authContext';
 import { createUser, updateUser } from '../../api/usersData';
 import { deleteUser } from '../../api/mergedData';
@@ -162,6 +163,16 @@ function ProfileForm({ obj }) {
               <div className="btn-group-vertical">
                 <button type="submit" className="btn btn-dark createBtn" onClick={handleSubmit}>{obj.handle ? 'Update' : 'Create'} Profile</button>
                 <button type="button" className="btn btn-link">Continue as guest</button>
+                <button
+                  type="button"
+                  className="btn signOutBtn btn-outline-danger"
+                  alt="sign out"
+                  onClick={() => {
+                    router.push('/');
+                    signOut();
+                  }}
+                ><GoSignOut />
+                </button>
               </div>
             </form>
           )}
