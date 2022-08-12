@@ -13,13 +13,13 @@ function PinCard({ pinObj }) {
       deletePin(pinObj.firebaseKey).then(() => router.push('/'));
     }
   };
-
+  console.warn(pinObj);
   return (
     <div className="pinContainer">
       <div
         // className="card"
         style={{
-          width: '690px', margin: '10px', borderRadius: '2%', display: 'flex', alignContent: 'center',
+          width: '700px', margin: '10px', borderRadius: '2%', display: 'flex', alignContent: 'center',
         }}
       >
         <div className="columnOne">
@@ -29,26 +29,37 @@ function PinCard({ pinObj }) {
           <div
             className="card-body"
             style={{
-              height: '70px', margin: '50px',
+              height: '70px', margin: '.5rem',
             }}
           >
-            <h1 className="card-title">{pinObj.name}</h1>
+            <h1
+              className="card-title"
+              style={{
+                margin: 0,
+              }}
+            >{pinObj.name}
+            </h1>
           </div>
           <div className="pin-content">
-            <Link passHref href={`/profile/${pinObj.user.handle}`}>
-              <h3 className="pin-creator">Created by <b><u><em>{pinObj.user.handle}</em></u></b></h3>
-            </Link>
-
-            <div className="pin-description"> {pinObj.description} </div>
+            {/* <Link passHref href={`/profile/${pinObj.user.handle}`}>
+              <h5 className="pin-creator">Created by <b><u><em>{pinObj.user.handle}</em></u></b></h5>
+            </Link> */}
+            <div
+              className="pin-description"
+              style={{
+                margin: '.5rem',
+              }}
+            > {pinObj.description}
+            </div>
           </div>
           <div>
-            <Link passHref href="/">
-              <p className="card-text">{pinObj.link}</p>
+            <Link passHref href={pinObj.link}>
+              <p className="card-text"><em>{pinObj.link}</em></p>
             </Link>
-            <p
+            <sup
               className="pin-date"
             >Created on {renderAbsoluteTime(pinObj.time)} {renderRelativeTime(pinObj.time)}
-            </p>
+            </sup>
             <div className="card-body">
               <Link href={`/pin/save/${pinObj.firebaseKey}`} passHref>
                 <button
@@ -81,6 +92,17 @@ function PinCard({ pinObj }) {
               </button>
             </div>
           </div>
+          <div className="card-footer pinDeets">
+            <Link passHref href={`/profile/${pinObj.user.handle}`}>
+              <img className="pinPhoto" src={pinObj.user.image} alt={pinObj.link} />
+            </Link>
+            <b>{pinObj.user.handle}</b>
+            <em> saved to </em>
+            <Link passHref href={`/board/${pinObj.boards[0].firebaseKey}`}>
+              <p><b>{pinObj?.boards[0].name}</b></p>
+            </Link>
+          </div>
+
         </div>
       </div>
     </div>
