@@ -16,7 +16,6 @@ export default function IndPinPage(onUpdate) {
   const getAllOfThePinsDetails = () => {
     getAllPins().then((pinsArray) => {
       setPins(pinsArray.filter((pin) => pin.user === pinDetails?.user.handle));
-      // console.warn(date);
     });
   };
 
@@ -39,7 +38,7 @@ export default function IndPinPage(onUpdate) {
         pinObj={pinDetails}
         onUpdate={onUpdate}
       />
-      <p className="pinUserDetail"> More Pins from this user</p>
+      <p className="pinUserDetail"> More Pins By Them</p>
       <div className="gridContainer">
         {pins?.map((pin) => (
           <PinCardForGrid pinObj={pin} key={pin.firebaseKey} onUpdate={getAllPins} />

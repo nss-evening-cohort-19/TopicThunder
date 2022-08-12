@@ -11,6 +11,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  border-radius: 20%/50%;
+}
+a:hover{
+  background: hotpink;
 }
 
 * {
@@ -18,6 +22,17 @@ a {
 }
 
 body {
+  background-color: rgb(255, 255, 255);
+}
+.container {
+  margin-top: 5rem;
+}
+.navbar {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
   background-color: rgb(255, 255, 255);
 }
 .signOutPage {
@@ -46,7 +61,7 @@ body {
 }
 .cardForm {
   margin: 2rem;
-  box-shadow: .5rem .5rem .5rem darkgray;
+  box-shadow: .5rem .5rem .5rem rgba(98, 2, 58, 0.285);
 }
 .input-group {
   display: flex;
@@ -61,6 +76,9 @@ body {
   border-radius: 50%;
   background: transparent;
   border: hidden;
+}
+.icons:hover{
+  background: hotpink;
 }
 .search-me {
   width: 100%;
@@ -114,7 +132,7 @@ body {
   border: none;
 }
 .profile {
-  height: 45vh;
+  height: 50vh;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
@@ -231,10 +249,12 @@ body {
 .pinContainer {
   display: flex;
   align-content: space-around;
+  align-items: center;
+  justify-content: center;
   box-shadow: rgba(99, 98, 98, 0.35) 0px 5px 15px;
   border-radius: 2%;
   width: 690px;
-  margin: 20px;
+  margin: auto;
 }
 .columnOne {
   display: inline;
@@ -249,6 +269,29 @@ body {
   flex-direction: column;
   justify-content: center;
 }
+.nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.icon-buttons {
+  border-radius: 50%;
+}
+.signOutBtn {
+  align-self: flex-end;
+  border: hidden;
+  color: hotpink;
+}
+.signOutBtn:hover {
+  background: hotpink;
+}
+.redText {
+  color: red;
+  text-decoration: none;
+}
+.redText:hover {
+  color: darkred;
+}
 .pin-map {
   column-count: 4;
   column-gap: 15px;
@@ -258,4 +301,11 @@ body {
   justify-content: center;
   font-size: x-large;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.navbar-brand:hover {
+  background: none;
+}
+.notificationDot {
+  margin-top: .5rem;
+  margin-left: .75rem;
 }

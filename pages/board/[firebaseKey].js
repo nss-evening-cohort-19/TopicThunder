@@ -26,9 +26,6 @@ export default function IndBoardPage(onUpdate) {
     getBoardDetails(firebaseKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseKey]);
-  console.warn(getBoardDetails);
-  console.error(boardDetails);
-
   return (
     <>
       <BoardHead handle={user?.handle} image={boardDetails?.image} name={boardDetails?.name} pinCount={boardDetails?.pins.length} onUpdate={onUpdate} />
