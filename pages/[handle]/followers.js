@@ -14,6 +14,7 @@ export default function ShowFollowPage() {
 
   useEffect(() => {
     getFollowData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [following]);
 
   return (

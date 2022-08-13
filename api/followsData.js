@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { clientCredentials } from '../utils/client';
+import { createNotification } from './notificationsData';
 import { getUserByHandle } from './usersData';
 
 const dbUrl = clientCredentials.databaseURL;
@@ -27,6 +28,7 @@ const addFollow = (followerHandle, followedHandle) => new Promise((resolve, reje
   axios.patch(`${dbUrl}/follows.json`, followKeyValue)
     .then((response) => resolve(response))
     .catch((error) => reject(error));
+  createNotification(followedHandle, followerHandle, 'Followed you');
 });
 
 const removeFollow = (followerHandle, followedHandle) => new Promise((resolve, reject) => {

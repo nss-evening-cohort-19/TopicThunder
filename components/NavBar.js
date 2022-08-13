@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import {
@@ -8,10 +8,44 @@ import {
 } from 'react-icons/bs';
 import { useAuth } from '../utils/context/authContext';
 import { getUserByUid } from '../api/usersData';
+import { getNotifications } from '../api/notificationsData';
 
 export default function NavBar() {
   const { user } = useAuth();
   const router = useRouter();
+  const [notifications, setNotifications] = useState([]);
+  const [unseenExist, setUnseenExist] = useState(false);
+
+  const grabNotifications = () => {
+    getNotifications(user.handle).then((response) => {
+      setNotifications(response);
+    });
+  };
+
+  const checkForUnseen = () => {
+    if ((notifications.filter((notification) => notification.seen === false)).length > 0) {
+      setUnseenExist(true);
+    } else {
+      setUnseenExist(false);
+    }
+  };
+
+  const recursiveUpdateNotifications = () => {
+    if (user.handle) {
+      grabNotifications();
+      setTimeout(() => recursiveUpdateNotifications(), 5000);
+    }
+  };
+
+  useEffect(() => {
+    recursiveUpdateNotifications();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
+
+  useEffect(() => {
+    checkForUnseen();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [notifications]);
 
   const checkIfUserExistsThenRoute = () => {
     getUserByUid(user.uid).then((response) => {
@@ -63,10 +97,14 @@ export default function NavBar() {
             {user.handle !== null
               ? (
                 <>
-                  <button type="button" className="icons btn btn-light">
-                    <span className="position-absolute bottom-4 start-85 translate-middle p-2 bg-danger border border-light rounded-circle notificationDot">
-                      <span className="visually-hidden">New alerts</span>
-                    </span>
+                  <button type="button" className="icons btn btn-light" onClick={() => router.push('/notifications')}>
+                    { unseenExist
+                      ? (
+                        <span className="position-absolute bottom-4 start-85 translate-middle p-2 bg-danger border border-light rounded-circle notificationDot">
+                          <span className="visually-hidden">New alerts</span>
+                        </span>
+                      )
+                      : '' }
                     <h3><BsBellFill /></h3>
                   </button>
                   <button type="button" className="icons btn btn-light">

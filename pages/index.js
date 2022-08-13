@@ -25,7 +25,7 @@ export default function HomePage() {
         {pins.map((pin) => (
           <PinCardForGrid pinObj={pin} key={pin.firebaseKey} onUpdate={getAllPins} />
         ))}
-        {/* <button type="button" size="lg" className="btn signBtn btn-primary btn-large" onClick={() => getSingleBoardDetails('-N92u-p-1_ks1DLFgCam').then(console.warn)}>
+        {/* <button type="button" size="lg" className="btn signBtn btn-primary btn-large" onClick={() => addPinToBoard('-N9Kj_rtAvEH6nVyJbxY', '-N93JBVBPQjDjh3A_YVR')}>
           Test Button
         </button> */}
       </div>

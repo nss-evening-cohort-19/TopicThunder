@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import axios from 'axios';
 import { clientCredentials } from '../utils/client';
 import { getPinsContainedByGivenBoard } from './collectionsData';

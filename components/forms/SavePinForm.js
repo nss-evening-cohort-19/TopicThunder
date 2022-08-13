@@ -20,7 +20,6 @@ function SavePinForm({ pinFirebaseKey }) {
   }, [user.handle]);
 
   const handleChange = (e) => {
-    console.warn(e.target);
     const { name, value } = e.target;
     setFormInput((prevState) => ({
       ...prevState,
