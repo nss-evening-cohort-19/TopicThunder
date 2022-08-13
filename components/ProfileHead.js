@@ -20,7 +20,6 @@ function ProfilePage({ image, displayName, handle }) {
   const [followed, setFollowed] = useState(null);
   const host = 'localhost:3000';
   const path = router.asPath;
-  console.warn(host + path);
 
   const gatherFollowDataOfProfile = () => {
     getWhoUserFollows(handle).then((userArray) => {

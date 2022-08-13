@@ -15,7 +15,7 @@ function PinCard({ pinObj }) {
       deletePin(pinObj.firebaseKey).then(() => router.push('/'));
     }
   };
-  console.warn(pinObj);
+
   return (
     <div className="pinContainer">
       <div
