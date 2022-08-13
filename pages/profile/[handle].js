@@ -17,7 +17,6 @@ export default function ViewProfile() {
   useEffect(() => {
     getUserByHandle(handle).then(setUserDetails);
     getMultipleBoardDetails(handle).then(setBoardDetails);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [handle]);
 
   return (

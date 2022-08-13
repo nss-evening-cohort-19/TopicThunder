@@ -309,3 +309,48 @@ body {
   margin-top: .5rem;
   margin-left: .75rem;
 }
+.friendship {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.friendCard {
+  width: 50%;
+  margin: .5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+}
+.friendDetails {
+  width: 50%;
+  text-align: left;
+  margin: .5rem;
+}
+.friendCard img {
+  height: 5rem;
+  width: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+}
+.friendCard .friendBtn {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.pinPhoto {
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.pinDeets{
+  display: flex;
+  align-self: flex-end;
+}
+.pinDeets img{
+  margin: .25rem;
+}

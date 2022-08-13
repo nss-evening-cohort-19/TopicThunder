@@ -1,19 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import FollowCard from '../../components/FollowCard';
-import { getUserByHandle } from '../../api/usersData';
+import { getWhoUserFollows } from '../../api/followsData';
 
 export default function ShowFollowPage() {
-  const [userDetails, setUserDetails] = useState({});
-
+  const [following, setFollowing] = useState();
   const router = useRouter();
   const { handle } = router.query;
 
+  const getFollowData = () => {
+    getWhoUserFollows(handle).then(setFollowing);
+  };
+
   useEffect(() => {
-    getUserByHandle(handle).then(setUserDetails);
-  }, [handle]);
+    getFollowData();
+  }, [following]);
 
   return (
-    <FollowCard handle={userDetails.handle} />
+    <>
+      <div className="card cardForm text-center text-dark bg-light mb-3">
+        <div className="card-header">
+          <h3>Following {handle}</h3>
+        </div>
+        <div className="card-body friendship">
+          {following?.map((obj) => (
+            <FollowCard key={obj?.handle} image={obj?.image} handle={obj?.handle} name={obj?.displayName} />
+          ))}
+        </div>
+        <div className="card-footer text-muted">
+          TOPIC THUNDER &#8482;
+        </div>
+      </div>
+    </>
   );
 }

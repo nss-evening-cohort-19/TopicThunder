@@ -17,7 +17,7 @@ export default function IndPinPage(onUpdate) {
     getPinDetails(firebaseKey);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseKey]);
-
+  console.warn(pinDetails);
   return (
     <PinCard
       pinObj={pinDetails}
