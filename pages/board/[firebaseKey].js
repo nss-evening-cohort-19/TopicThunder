@@ -10,25 +10,25 @@ import { getSingleBoardDetails } from '../../api/boardsData';
 // import BoardCard from '../../components/BoardCard';
 import PinCardForGrid from '../../components/PinCardForGrid';
 
-export default function IndBoardPage(onUpdate) {
+export default function IndBoardPage() {
   const { user } = useAuth();
   const router = useRouter();
   const [boardDetails, setBoardDetails] = useState();
   const { firebaseKey } = router.query;
 
-  function getBoardDetails(key) {
-    getSingleBoardDetails(key).then((response) => {
+  function getBoardDetails() {
+    getSingleBoardDetails(firebaseKey).then((response) => {
       setBoardDetails(response);
     });
   }
 
   useEffect(() => {
-    getBoardDetails(firebaseKey);
+    getBoardDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [firebaseKey]);
   return (
     <>
-      <BoardHead handle={user?.handle} image={boardDetails?.image} name={boardDetails?.name} pinCount={boardDetails?.pins.length} onUpdate={onUpdate} />
+      <BoardHead handle={user?.handle} image={boardDetails?.image} name={boardDetails?.name} pinCount={boardDetails?.pins.length} />
       {/* <div className="boardContainer">
         <BoardCard
           name={boardDetails?.name}
@@ -57,7 +57,7 @@ export default function IndBoardPage(onUpdate) {
         : '' }
       <div className="pin-map">
         {boardDetails?.pins.map((pin) => (
-          <PinCardForGrid key={pin.firebaseKey} pinObj={pin} />
+          <PinCardForGrid key={pin.firebaseKey} pinObj={pin} remPin boardKey={boardDetails?.firebaseKey} onUpdate={getBoardDetails()} />
         ))}
       </div>
     </>
