@@ -239,8 +239,8 @@ body {
 }
 .card-body {
   display: flex;
-  align-content: center;
-  justify-content: space-around;
+  align-content: left;
+  justify-content: space-between;
 }
 .card-title {
   display: flex;
@@ -353,4 +353,13 @@ body {
 }
 .pinDeets img{
   margin: .25rem;
+}
+
+.createdBy {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.userClickThrough {
+  display: inline;
 }

@@ -35,7 +35,7 @@ function PinCardForGrid({
               </button>
             )
             : ''}
-          <Link passHref href={`pin/${pinObj.firebaseKey}`}>
+          <Link passHref href={`../pin/${pinObj.firebaseKey}`}>
             <p className="hoverTitle">{pinObj.name}</p>
           </Link>
           <p className="hoverDescription">{pinObj.description}</p>
