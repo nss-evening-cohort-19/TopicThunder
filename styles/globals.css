@@ -239,8 +239,8 @@ body {
 }
 .card-body {
   display: flex;
-  align-content: left;
-  justify-content: space-between;
+  align-content: center;
+  justify-content: space-around;
 }
 .card-title {
   display: flex;
@@ -263,6 +263,7 @@ body {
 .columnTwo {
   display: inline;
   margin-left: 20px;
+  width: 50rem;
 }
 .pin-content {
   display: flex;
@@ -362,4 +363,8 @@ body {
 
 .userClickThrough {
   display: inline;
+}
+
+.cardButtonDetails {
+  justify-content: space-between;
 }

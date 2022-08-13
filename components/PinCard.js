@@ -34,13 +34,13 @@ function PinCard({ pinObj }) {
               height: '70px', margin: '.5rem',
             }}
           >
-            <h1
+            <h2
               className="card-title"
               style={{
                 margin: 0,
               }}
             >{pinObj.name}
-            </h1>
+            </h2>
           </div>
           <div className="pin-content">
             {/* <Link passHref href={`/profile/${pinObj.user.handle}`}>
@@ -56,7 +56,7 @@ function PinCard({ pinObj }) {
           </div>
           <div>
             <Link passHref href={pinObj.link}>
-              <p className="card-text"><em>{pinObj.link}</em></p>
+              <a className="card-text" href={pinObj.link}>Follow link</a>
             </Link>
             <div className="card-footer pinDeets">
               <Link passHref href={`/profile/${pinObj.user.handle}`}>
@@ -74,7 +74,7 @@ function PinCard({ pinObj }) {
               className="pin-date"
             >... on {renderAbsoluteTime(pinObj.time)}, {renderRelativeTime(pinObj.time)}
             </sup>
-            <div className="card-body">
+            <div className="card-body cardButtonDetails">
               <Link href={`/pin/save/${pinObj.firebaseKey}`} passHref>
                 <button
                   type="button"
