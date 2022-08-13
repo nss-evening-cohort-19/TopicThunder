@@ -348,6 +348,7 @@ body {
   border-radius: 50%;
 }
 .pinDeets{
+  display: flex;
   align-self: flex-end;
 }
 .pinDeets img{

@@ -96,10 +96,10 @@ function PinCard({ pinObj }) {
             <Link passHref href={`/profile/${pinObj.user.handle}`}>
               <img className="pinPhoto" src={pinObj.user.image} alt={pinObj.link} />
             </Link>
-            <b>{pinObj.user.handle}</b>
+            <b> {pinObj.user.handle} </b>
             <em> saved to </em>
-            <Link passHref href={`/board/${pinObj.boards[0].firebaseKey}`}>
-              <p><b>{pinObj?.boards[0].name}</b></p>
+            <Link passHref href={`/pin/${pinObj.firebaseKey}`}>
+              <p><b> {pinObj?.name} </b></p>
             </Link>
           </div>
 
