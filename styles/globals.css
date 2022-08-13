@@ -263,6 +263,7 @@ body {
 .columnTwo {
   display: inline;
   margin-left: 20px;
+  width: 50rem;
 }
 .pin-content {
   display: flex;
@@ -353,4 +354,17 @@ body {
 }
 .pinDeets img{
   margin: .25rem;
+}
+
+.createdBy {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.userClickThrough {
+  display: inline;
+}
+
+.cardButtonDetails {
+  justify-content: space-between;
 }

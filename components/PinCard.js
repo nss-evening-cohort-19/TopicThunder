@@ -34,13 +34,13 @@ function PinCard({ pinObj }) {
               height: '70px', margin: '.5rem',
             }}
           >
-            <h1
+            <h2
               className="card-title"
               style={{
                 margin: 0,
               }}
             >{pinObj.name}
-            </h1>
+            </h2>
           </div>
           <div className="pin-content">
             {/* <Link passHref href={`/profile/${pinObj.user.handle}`}>
@@ -56,13 +56,25 @@ function PinCard({ pinObj }) {
           </div>
           <div>
             <Link passHref href={pinObj.link}>
-              <p className="card-text"><em>{pinObj.link}</em></p>
+              <a className="card-text" href={pinObj.link}>Follow link</a>
             </Link>
+            <div className="card-footer pinDeets">
+              <Link passHref href={`/profile/${pinObj.user.handle}`}>
+                <div className="userClickThrough">
+                  <img className="pinPhoto" src={pinObj.user.image} alt={pinObj.link} />
+                  <span className="createdBy"> Created by <b> {pinObj.user.handle} </b></span>
+                </div>
+              </Link>
+              {/* <em> saved to </em>
+            <Link passHref href={`/pin/${pinObj.firebaseKey}`}>
+              <p><b> {pinObj?.name} </b></p>
+            </Link> */}
+            </div>
             <sup
               className="pin-date"
-            >Created on {renderAbsoluteTime(pinObj.time)} {renderRelativeTime(pinObj.time)}
+            >... on {renderAbsoluteTime(pinObj.time)}, {renderRelativeTime(pinObj.time)}
             </sup>
-            <div className="card-body">
+            <div className="card-body cardButtonDetails">
               <Link href={`/pin/save/${pinObj.firebaseKey}`} passHref>
                 <button
                   type="button"
@@ -101,17 +113,6 @@ function PinCard({ pinObj }) {
                 : ''}
             </div>
           </div>
-          <div className="card-footer pinDeets">
-            <Link passHref href={`/profile/${pinObj.user.handle}`}>
-              <img className="pinPhoto" src={pinObj.user.image} alt={pinObj.link} />
-            </Link>
-            <b> {pinObj.user.handle} </b>
-            <em> saved to </em>
-            <Link passHref href={`/pin/${pinObj.firebaseKey}`}>
-              <p><b> {pinObj?.name} </b></p>
-            </Link>
-          </div>
-
         </div>
       </div>
     </div>
