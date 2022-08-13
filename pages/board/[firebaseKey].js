@@ -16,11 +16,11 @@ export default function IndBoardPage() {
   const [boardDetails, setBoardDetails] = useState();
   const { firebaseKey } = router.query;
 
-  function getBoardDetails() {
+  const getBoardDetails = () => {
     getSingleBoardDetails(firebaseKey).then((response) => {
       setBoardDetails(response);
     });
-  }
+  };
 
   useEffect(() => {
     getBoardDetails();
@@ -57,7 +57,7 @@ export default function IndBoardPage() {
         : '' }
       <div className="pin-map">
         {boardDetails?.pins.map((pin) => (
-          <PinCardForGrid key={pin.firebaseKey} pinObj={pin} remPin boardKey={boardDetails?.firebaseKey} onUpdate={getBoardDetails()} />
+          <PinCardForGrid key={pin.firebaseKey} pinObj={pin} remPin boardKey={boardDetails?.firebaseKey} onUpdate={getBoardDetails} />
         ))}
       </div>
     </>

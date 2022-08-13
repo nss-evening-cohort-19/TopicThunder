@@ -1,6 +1,9 @@
+/* eslint-disable import/no-cycle */
 import axios from 'axios';
 import { clientCredentials } from '../utils/client';
 import { addPinToBoard, getBoardsThatContainGivenPin } from './collectionsData';
+import { getWhoFollowsUser } from './followsData';
+import { createNotification } from './notificationsData';
 import { getUserByHandle } from './usersData';
 
 const dbUrl = clientCredentials.databaseURL;
@@ -42,13 +45,23 @@ const deletePinShallow = (pinFirebaseKey) => new Promise((resolve, reject) => {
 });
 
 const createPin = (pinObj, boardToConnect) => new Promise((resolve, reject) => {
+  let firebaseKeyVessel = '';
   axios.post(`${dbUrl}/pins.json`, pinObj)
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
+      firebaseKeyVessel = response.data.name;
       axios.patch(`${dbUrl}/pins/${response.data.name}.json`, payload)
         .then(() => {
-          addPinToBoard(response.data.name, boardToConnect).then(resolve);
+          if (boardToConnect) {
+            addPinToBoard(response.data.name, boardToConnect).then(resolve);
+          } else {
+            resolve();
+          }
         });
+      getWhoFollowsUser(pinObj.user).then((subscribers) => {
+        const notificationPromises = subscribers.map((subscriber) => createNotification(subscriber.handle, pinObj.user, 'Created a pin', `../pin/${firebaseKeyVessel}`));
+        Promise.all(notificationPromises);
+      });
     }).catch(reject);
 });
 

@@ -70,7 +70,7 @@ PinCardForGrid.defaultProps = {
     firebaseKey: '123',
   }),
   remPin: false,
-  onUpdate: {},
+  onUpdate: () => console.warn('default'),
   boardKey: '',
 };
 

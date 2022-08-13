@@ -1,5 +1,9 @@
+/* eslint-disable import/no-cycle */
 import axios from 'axios';
 import { clientCredentials } from '../utils/client';
+import { getSingleBoardDetails } from './boardsData';
+import { createNotification } from './notificationsData';
+import { getSinglePinDetails } from './pinsData';
 
 const dbUrl = clientCredentials.databaseURL;
 
@@ -38,6 +42,13 @@ const addPinToBoard = (pinFirebaseKey, boardFirebaseKey) => new Promise((resolve
   axios.patch(`${dbUrl}/collections.json`, collectionKeyValue)
     .then((response) => resolve(response))
     .catch((error) => reject(error));
+  getSingleBoardDetails(boardFirebaseKey).then((boardObj) => {
+    getSinglePinDetails(pinFirebaseKey).then((pinObj) => {
+      if (pinObj.user.handle !== boardObj.user.handle) {
+        createNotification(pinObj.user.handle, boardObj.user.handle, 'Saved your pin', `../pin/${pinFirebaseKey}`);
+      }
+    });
+  });
 });
 
 const removePinFromBoard = (pinFirebaseKey, boardFirebaseKey) => new Promise((resolve, reject) => {
