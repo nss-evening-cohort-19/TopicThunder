@@ -3,10 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useAuth } from '../utils/context/authContext';
 import { deletePin } from '../api/mergedData';
 import { renderAbsoluteTime, renderRelativeTime } from '../utils/time';
 
 function PinCard({ pinObj }) {
+  const { user } = useAuth();
   const router = useRouter();
   const deleteThisPin = () => {
     if (window.confirm(`Delete ${pinObj.name}?`)) {
@@ -60,25 +62,32 @@ function PinCard({ pinObj }) {
                 >Save
                 </button>
               </Link><br />
-              <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
-                <button
-                  type="button"
-                  className="btn btn-dar"
-                  style={{
-                    width: '70px', margin: '10px', background: 'hotpink', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
-                  }}
-                >Edit
-                </button>
-              </Link><br />
-              <button
-                style={{
-                  display: 'flex', alignSelf: 'flex-end', width: '70px', margin: '10px', background: 'lightgrey', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
-                }}
-                type="button"
-                className="btn btn-"
-                onClick={deleteThisPin}
-              >Delete
-              </button>
+              { pinObj.user.handle === user.handle
+                ? (
+                  <>
+                    <Link href={`/pin/edit/${pinObj.firebaseKey}`} passHref>
+                      <button
+                        type="button"
+                        className="btn btn-dar"
+                        style={{
+                          width: '70px', margin: '10px', background: 'hotpink', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                        }}
+                      >Edit
+                      </button>
+                    </Link>
+                    <br />
+                    <button
+                      style={{
+                        display: 'flex', alignSelf: 'flex-end', width: '70px', margin: '10px', background: 'lightgrey', borderRadius: '20%/50%', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+                      }}
+                      type="button"
+                      className="btn btn-"
+                      onClick={deleteThisPin}
+                    >Delete
+                    </button>
+                  </>
+                )
+                : ''}
             </div>
           </div>
         </div>
