@@ -1,78 +1,135 @@
-# React/Next.js Template
-
-[See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
-
-## Topics
-- [Get Started](#get-started)
-- [Starting the Project](#starting-the-project)
-- [Using axios](#using-axios)
-- [Deploying on Netlify](#deploying-on-netlify)
-___
-## Getting Started
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-<img width="915" alt="Screen Shot 2022-07-06 at 12 54 01 PM" src="https://user-images.githubusercontent.com/29741570/177612998-4aac9237-5a1e-4f13-8ae0-468587521564.png">
-
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-<img width="763" alt="Screen Shot 2022-07-06 at 12 54 48 PM" src="https://user-images.githubusercontent.com/29741570/177613126-dd38f678-7553-4f27-8a4a-75680f14d71e.png">
-
-#### 3. Clone your new repo to your local machine
-#### 4. Go to the **NEXT** section
-
-## Starting the Project
-1. Create a Firebase project and set up authentication. Use [these videos](https://vimeo.com/showcase/codetracker-firebase) as a refresher if needed.
-1. Create a `.env` file at the root of the project
-1. Copy/Paste the contents of the `.env.sample` file to your newly created `.env` file.
-1. Copy over all of your Firebase values into the `.env` file.
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name.
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short.
-1. Next, run `npm run prepare`. This command sets up husky to track eslint errors on commit that will make your deploy fail on Netlify.
-1. To start your application, run `npm run dev`. THIS IS THE COMMAND YOU WILL USE TO RUN YOUR DEVELOPMENT SERVER FROM NOW ON.
-1. Open [http://localhost:3000](http://localhost:3000) with your browser.
-
-### If you see this, you are set to go!
-<img width="450" alt="Screen Shot 2022-07-06 at 1 07 27 PM" src="https://user-images.githubusercontent.com/29741570/177615077-9b6a75bc-0260-4d29-bb88-bd95a3140687.png">
+<p align="center"><image src="./public/logoType.png" style="height:300px;"></image></p>
 
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-**NOTES:** 
-- If you see the following error, you did not follow all the setup steps correctly and failed to add your Firebase creds. Go back and do that NOW.
+## The Who, How, and Why
 
-<img width="1043" alt="Screen Shot 2022-07-06 at 11 18 45 AM" src="https://user-images.githubusercontent.com/29741570/177612501-c2628f18-4bbd-4de9-aae6-27ffba1172d6.png">
+***
 
-### Using Axios
-> For every file you will need to make an XHR request in, you will need to require Axios
-```js
-import axios from 'axios';
+* **Primary Features**
 
-const examplePromise = () => {
-  axios.get('http://localhost:3001/example')
-    .then((data) => {
-      console.warn(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-});
-```
+The application allows a user to create a personal board to save pins that would have use in their life or edification of the soul. A user can create, edit, update and delete their individual board or pins only.
 
-### Deploying on Netlify
-Netlify will automatically detect your project and prepopulate the settings, but should something go wrong and it does not, here are the commands:
+* **Target Audience**
 
-- Build Command: `npm run build`
-- Publish directory: `.next`
+This is for any user that wishes to explore and save pin with content to their board for later use. 
 
-#### Additional Steps to Take on Netlify
-- Add Environmental Variables
-    - Any Enviromental variables you are using in your `.env` file should be added to Netlify. 
-        - Go to Site settings > Build & deploy > Environment > Environment variables and the keys and values there.
+* **Purpose**
 
-- Update Firebase URL Settings
-    - In Firebase under Authentication select sign in methods, scroll to Authorized domains. Add your Netlify URL.
-        
-## Learn More about Next.js
-To learn more about Next.js, take a look at the following resources:
+This project is for users who wish to add pins to their board for saving content and contributing pins/ content for others with interactive components. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Getting Started** 
+
+You can start testing the product by logging in with your respective Google account or using the guest login button if you only wish to view the project without exploring all functions. If authenticated, use the home page buttons to view all the pins created in a random fashion. If you only need a smaller set of pins to view, you may click the Today link on the NavBar to view only today's sorted pins. The best way to begin is to:
+
+* Create a profile on the profile page 
+
+* Click the plus icon to create a board to store your pins under 
+
+* Create pins under the board to have a collection of pins based on your thought process or inspiration. 
+
+* Use the side bar that pulls out in the profile page to access the sign out button to exit the app. 
+
+
+
+## Help
+
+***
+
+* **Help**
+
+Users can get help with this project, if needed, by sending a discussion message on our team discussions page! Click [here](https://github.com/nss-evening-cohort-19/TopicThunder/discussions/23) to message our team!
+
+
+
+## Team Topic Thundaaaaa
+
+***
+
+
+* **Contributors**
+
+Michael Pennington, Micah "Tots" Stotsky, Patrick Burns, Jeremiah King
+
+
+
+## ERD
+
+***
+
+* **Topic Thunder Team 2 ERD**
+
+[Topic Thunder Team 2 ERD Link](https://lucid.app/lucidchart/13340502-ea78-487e-b1fd-1396731214cb/edit?invitationId=inv_ed16f191-1154-4050-bf52-dafd5bde348a&page=0_0#?referringapp=slack&login=slack)
+
+
+
+## Postman Collection
+
+***
+
+* **Topic Thunder Team 2 Postman Collection**
+
+[Postman Collection for Topic Thunder Team 2 Link](https://gold-flare-64538.postman.co/workspace/e8003116-4f66-485c-bce6-083279a65ad4/request/20400090-be3aec7d-f765-41cc-a006-5361de3e3217)
+
+
+
+## Wireframes
+
+***
+
+* **Topic Thunder Team 2 Wireframe**
+
+[Topic Thunder Team 2 Wireframe Link](https://dbdiagram.io/d/62e92d28f31da965e86355c4)  <--Click to view the wireframe.
+
+* Data Outline Doc for FLow
+
+  [Data Outline Link](https://docs.google.com/document/d/1N5pNIEKz2PE9UZ19xet_CZcsqNv5-QMZ2HK2sg0Swb0/edit)
+
+
+
+## Flowcharts
+
+***
+
+* **Topic Thunder Team 2 FigJam Flowchart**
+
+[Topic Thunder Team 2 Flow Chart Link](https://www.figma.com/file/IbTWQlDC5JZszfziknk4Wl/MVP-POS-Team-1)
+
+
+* **Topic Thunder Team 2 Lucid Flowchart**
+
+[Lucid Flow Chart Link](https://lucid.app/documents/view/0f2813bb-8e81-461a-856f-01699ea04dea)
+
+We also had another flow chart drawn up for visual planning in Lucid
+
+
+
+## Links to Issue Tickets/ Milestones/ Project Board
+
+***
+
+* **Github Topic Thunder Team 2 Issue Tickets** 
+
+[Topic Thunder Team 2 Issue Tickets Link](https://github.com/nss-evening-cohort-19/TopicThunder/issues)
+
+* **Github Topic Thunder Team 2 Milestones** 
+
+[Topic Thunder Team 2 Milestones Link](https://github.com/nss-evening-cohort-19/TopicThunder/milestones)
+
+* **Topic Thunder- Team 2 Project Board**
+
+[Team 2 Project Board Link](https://github.com/orgs/nss-evening-cohort-19/projects/7)
+
+
+
+## Descriptive video and deployment documentation
+
+***
+
+* **LOOM Videos**
+
+[Loom Link](https://www.loom.com/share/ab62b84a0946402fbc5a64d9645f5b12)
+
+* **Netlify Deployment Link**
+
+[Netlify Topic Thunder Link](https://topic-thunder1.netlify.app/)
