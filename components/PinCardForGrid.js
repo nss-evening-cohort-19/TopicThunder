@@ -2,11 +2,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { removePinFromBoard } from '../api/collectionsData';
 // import { useRouter } from 'next/router';
 // import { deletePin } from '../api/mergedData';
 // import { renderAbsoluteTime, renderRelativeTime } from '../utils/time';
 
-function PinCardForGrid({ pinObj }) {
+function PinCardForGrid({
+  pinObj, remPin, onUpdate, boardKey,
+}) {
   // const router = useRouter();
   // const deleteThisPin = () => {
   //   if (window.confirm(`Delete ${pinObj.name}?`)) {
@@ -18,12 +21,27 @@ function PinCardForGrid({ pinObj }) {
     <>
       <div className="card gridCard">
         <img src={pinObj.image} className="card-img-top" alt="pin-pic" />
-        <Link passHref href={`../pin/${pinObj.firebaseKey}`}>
-          <div className="hoverContainer">
+        <div className="hoverContainer">
+          { remPin
+            ? (
+              <button
+                type="button"
+                className="btn btn-light"
+                style={{
+                  backgroundColor: 'black', color: 'hotpink', width: '40px', height: '40px', display: 'flex',
+                }}
+                onClick={() => removePinFromBoard(pinObj.firebaseKey, boardKey).then(onUpdate)}
+              >X
+              </button>
+            )
+            : ''}
+          <Link passHref href={`pin/${pinObj.firebaseKey}`}>
             <p className="hoverTitle">{pinObj.name}</p>
-            <p className="hoverDescription">{pinObj.description}</p>
-          </div>
-        </Link>
+          </Link>
+          <p className="hoverDescription">{pinObj.description}</p>
+
+        </div>
+
       </div>
     </>
   );
@@ -39,6 +57,9 @@ PinCardForGrid.propTypes = {
     description: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
+  remPin: PropTypes.bool,
+  onUpdate: PropTypes.func,
+  boardKey: PropTypes.string,
 };
 
 PinCardForGrid.defaultProps = {
@@ -48,6 +69,9 @@ PinCardForGrid.defaultProps = {
     link: 'Someaddress@blabla.com',
     firebaseKey: '123',
   }),
+  remPin: false,
+  onUpdate: {},
+  boardKey: '',
 };
 
 export default PinCardForGrid;
